@@ -10,11 +10,12 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
+        # Change the title of main window
         self.setWindowTitle("My First App")
         button = QPushButton("Press Me!")
         # Setting the size on the window
         self.setFixedSize(QSize(400, 300))
-        # Set the central widget of the Window.
+        # Set the central widget of the Window
         self.setCentralWidget(button)
 
 
