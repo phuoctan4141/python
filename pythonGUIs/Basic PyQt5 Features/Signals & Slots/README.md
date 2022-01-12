@@ -34,6 +34,8 @@ app = QApplication(sys.argv)
 window = MainWindow()
 window.show()
 app.exec_()
+
+🚀 Run it! If you press the button you’ll see it highlighted as checked. Press it again to release it. Look for the check state in the console.
 ```
 
 ## Storing data
