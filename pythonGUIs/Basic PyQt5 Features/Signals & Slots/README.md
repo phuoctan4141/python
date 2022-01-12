@@ -48,20 +48,20 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.button_is_checked = True
+        self.button_is_checked = True # <1>
 
         self.setWindowTitle("My App")
         
         button = QPushButton("Press Me!")
         button.setCheckable(True)
         button.clicked.connect(self.the_button_was_toggled)
-        button.setChecked(self.button_is_checked)
+        button.setChecked(self.button_is_checked) # <2>
 
         # Set the central widget of the Window.
         self.setCentralWidget(button)
 
     def the_button_was_toggled(self, checked):
-        self.button_is_checked = checked
+        self.button_is_checked = checked # <3>
         print(self.button_is_checked)
 
 
@@ -69,6 +69,10 @@ app = QApplication(sys.argv)
 window = MainWindow()
 window.show()
 app.exec_()
+
+# <1> Set the default value for our variable.
+# <2> Use the default value to set the initial state of the widget.
+# <3> When the widget state changes, update the variable to match.
 ```  
 \
 &emsp; You can use this same pattern with any PyQt5 widgets. If a widget does not provide a signal that sends the current state, you will need to retrieve the value from the widget directly in your handler.
@@ -85,16 +89,16 @@ class MainWindow(QMainWindow):
 
         self.setWindowTitle("My App")
 
-        self.button = QPushButton("Press Me!")
+        self.button = QPushButton("Press Me!") # <1>
         self.button.setCheckable(True)
-        self.button.released.connect(self.the_button_was_released)
+        self.button.released.connect(self.the_button_was_released) # <2>
         self.button.setChecked(self.button_is_checked)
 
         # Set the central widget of the Window.
         self.setCentralWidget(self.button)
 
     def the_button_was_released(self):
-        self.button_is_checked = self.button.isChecked()
+        self.button_is_checked = self.button.isChecked() # <3>
 
         print(self.button_is_checked)
 
@@ -103,5 +107,8 @@ app = QApplication(sys.argv)
 window = MainWindow()
 window.show()
 app.exec_()
-```
 
+# <1> We need to keep a reference to the button on self so we can access it in our slot.
+# <2> The released signal fires when the button is released, but does not send the check state.
+# <3> .isChecked() returns the check state of the button.
+```
