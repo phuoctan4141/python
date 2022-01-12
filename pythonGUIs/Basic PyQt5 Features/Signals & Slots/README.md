@@ -34,10 +34,10 @@ app = QApplication(sys.argv)
 window = MainWindow()
 window.show()
 app.exec_()
-
-🚀 Run it! If you press the button you’ll see it highlighted as checked. Press it again to release it. Look for the check state in the console.
 ```
-
+🚀 Run it! If you press the button you’ll see it highlighted as checked.
+    Press it again to release it. Look for the check state in the console.
+    
 ## Storing data
 &emsp; Often it is useful to store the current state of a widget in a Python variable. This allows you to work with the values like any other Python variable and without accessing the original widget. You can either store these values as individual variables or use a dictionary if you prefer.
 ```
