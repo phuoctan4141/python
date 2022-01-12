@@ -27,7 +27,7 @@ app.exec_()
 
 - Common Qt widgets are always imported from the QtWidgets namespace.
 - Must always call the __init__ method of the super() class.
-- When you subclass a Qt class you must always call the super __init__ function to allow Qt to set up the object. \
+- When you subclass a Qt class you must always call the super __init__ function to allow Qt to set up the object.
 
 :rocket: Run it! You will now see your window again, but this time with the QPushButton widget in the middle. Pressing the button will do nothing, we’ll sort that next.
 
