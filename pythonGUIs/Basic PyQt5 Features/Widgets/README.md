@@ -36,7 +36,7 @@ By ORing together we get the value 0b0101 representing 'bottom left'.*
 | --- | --- |
 | ![True](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Widgets/images/widgets_QLabel_QPixmap_False.png) | ![False](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Widgets/images/widgets_QLabel_QPixmap_True.png) |
 
-🚀 Run widgets_QLabel_QPixmap.py
+🚀 Run [widgets_QLabel_QPixmap.py](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Widgets/widgets_QLabel_QPixmap.py)
 
 ## QCheckBox
 &emsp; You can set a checkbox state programmatically using .setChecked or .setCheckState. The former accepts either True or False representing checked or unchecked respectively. However, with .setCheckState you also specify a partially checked state using a Qt. namespace flag—
@@ -59,5 +59,5 @@ flags. This means you can test state using state == Qt.Checked.*
 | --- | --- |
 | ![De](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Widgets/images/widgets_QCheckBox_default.png)  | ![Tri](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Widgets/images/widgets_QCheckBox_tristate.png) |
 
-🚀 Run widgets_QCheckBox.py
+🚀 Run [widgets_QCheckBox.py](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Widgets/widgets_QCheckBox.py)
 
