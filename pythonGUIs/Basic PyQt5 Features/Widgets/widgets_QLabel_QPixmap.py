@@ -13,7 +13,7 @@ class MainWindow(QMainWindow):
         widget = QLabel("Hello")
         # tag::scaledContents[]
         widget.setPixmap(QPixmap("otje.jpg"))
-        #widget.setScaledContents(True)
+        widget.setScaledContents(True)
         # end::scaledContents[]
 
         self.setCentralWidget(widget)
