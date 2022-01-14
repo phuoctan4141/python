@@ -28,7 +28,7 @@ By ORing together we get the value 0b0101 representing 'bottom left'.*
 ### Finally, there is also a shorthand flag that centers in both directions simultaneously—
 | Flag | Behavior |
 | --- | --- |
-| Qt.AlignCenter Centers | horizontally and vertically |
+| Qt.AlignCenter | Centers horizontally and vertically |
 
 &emsp; Weirdly, you can also use QLabel to display an image using the .setPixmap() method. This accepts an pixmap (a pixel array), which you can create by passing an image filename to QPixmap. \
 &emsp; By default the image scales while maintaining its aspect ratio. If you want it to stretch and scale to fit the window completely you can set .setScaledContents(True) on the QLabel.
