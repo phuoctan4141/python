@@ -55,3 +55,9 @@ remember these values, the Qt.Checked namespace variable
 == 2 for example. This is the value of these state’s respective
 flags. This means you can test state using state == Qt.Checked.*
 
+| Default | Tri-State |
+| --- | --- |
+| ![De](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Widgets/images/widgets_QCheckBox_default.png)  | ![Tri](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Widgets/images/widgets_QCheckBox_tristate.png) |
+
+🚀 Run widgets_QCheckBox.py
+
