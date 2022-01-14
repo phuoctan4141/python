@@ -48,7 +48,7 @@ By ORing together we get the value 0b0101 representing 'bottom left'.*
 
 &emsp; If you set the value to Qt.PartiallyChecked the checkbox will become tri-state (that is have three possible states). You can also set a checkbox to be tri-state without setting the current state to partially checked by using .setTriState(True)
 
-*You may notice that when the script is running the current
+**Note** : *You may notice that when the script is running the current
 state number is displayed as an int with checked = 2,
 unchecked = 0, and partially checked = 1. You don’t need to
 remember these values, the Qt.Checked namespace variable
