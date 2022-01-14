@@ -38,4 +38,20 @@ By ORing together we get the value 0b0101 representing 'bottom left'.*
 
 🚀 Run widgets_QLabel_QPixmap.py
 
+## QCheckBox
+&emsp; You can set a checkbox state programmatically using .setChecked or .setCheckState. The former accepts either True or False representing checked or unchecked respectively. However, with .setCheckState you also specify a partially checked state using a Qt. namespace flag—
+| Flag | Behavior |
+| --- | --- |
+| Qt.Checked | Item is checked |
+| Qt.Unchecked | Item is unchecked |
+| Qt.PartiallyChecked | Item is partially checked |
+
+&emsp; If you set the value to Qt.PartiallyChecked the checkbox will become tri-state (that is have three possible states). You can also set a checkbox to be tri-state without setting the current state to partially checked by using .setTriState(True)
+
+*You may notice that when the script is running the current
+state number is displayed as an int with checked = 2,
+unchecked = 0, and partially checked = 1. You don’t need to
+remember these values, the Qt.Checked namespace variable
+== 2 for example. This is the value of these state’s respective
+flags. This means you can test state using state == Qt.Checked.*
 
