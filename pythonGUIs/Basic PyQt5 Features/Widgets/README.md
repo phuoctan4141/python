@@ -109,6 +109,8 @@ which is often more useful.
 '''
 ```
 
+🚀 Run it! You’ll see a combo box with 3 entries. Select one and it will be shown in the box.
+
 &emsp; You can add items to a QComboBox by passing a list of strings to .addItems(). Items will be added in the order they are provided. \
 &emsp; QComboBox can also be editable, allowing users to enter values not currently in the list and either have them inserted, or simply used as a value. To make the box editable: ``` widget.setEditable(True) ``` \
 &emsp; You can also set a flag to determine how the insert is handled. These flags are stored on the QComboBox class itself and are listed below—
@@ -123,6 +125,5 @@ which is often more useful.
 | QComboBox.InsertAlphabetically | Insert in alphabetical order |
 
 &emsp; To use these, apply the flag as follows: ``` widget.setInsertPolicy(QComboBox.InsertAlphabetically) ``` \
-&emsp; You can also limit the number of items allowed in the box by using .setMaxCount, e.g. ``` widget.setMaxCount(10) ```
-
+&emsp; You can also limit the number of items allowed in the box by using .setMaxCount, e.g. ``` widget.setMaxCount(10) ``` \
 🚀 Run [widgets_QComboBox_1.py](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Widgets/widgets_QComboBox_1.py) to test them!
