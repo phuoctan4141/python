@@ -17,4 +17,4 @@
 &emsp; Cài đặt môi trường python: `Python3.7 -m venv venv` \
 &emsp; Vào trong môi trường: `source venv/bin/activate` \
 &emsp; Cài dặt hỗ trợ giao diện: `Pip3 install pyqt5`	`Pip3 install pyqt5 tools`	`Pip3 install pyqt5designer`	`Pip3 install PyQtChart` \
-&emsp; Cài đặt VirtualEnv nếu venv không tồn tại: `pip install VirtualEnv`
+&emsp; Cài đặt VirtualEnv nếu venv không tồn tại: `Pip3 install VirtualEnv`
