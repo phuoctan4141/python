@@ -67,6 +67,48 @@ font faces, or size, in word processing applications. Although
 Qt actually provides a specific font-selection combo box as
 QFontComboBox.*
 
+```
+import sys
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QApplication, QComboBox, QMainWindow
+
+
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+
+        self.setWindowTitle("My App")
+
+        widget = QComboBox()
+        widget.addItems(["One", "Two", "Three"])
+
+        widget.currentIndexChanged.connect(self.index_changed)
+        widget.currentTextChanged.connect(self.text_changed)
+
+        self.setCentralWidget(widget)
+
+    def index_changed(self, i):  # i is an int
+        print(i)
+
+    def text_changed(self, s):  # s is a str
+        print(s)
+
+
+app = QApplication(sys.argv)
+window = MainWindow()
+window.show()
+app.exec_()
+
+'''
+The .currentIndexChanged signal is triggered when the currently selected item
+is updated, by default passing the index of the selected item in the list.
+However, when connecting to the signal you can also request an alternative
+version of the signal by appending [str] (think of the signal as a dict). This
+alternative interface instead provides the label of the currently selected item,
+which is often more useful.
+'''
+```
+
 &emsp; You can add items to a QComboBox by passing a list of strings to .addItems(). Items will be added in the order they are provided. \
 &emsp; QComboBox can also be editable, allowing users to enter values not currently in the list and either have them inserted, or simply used as a value. To make the box editable: ``` widget.setEditable(True) ``` \
 &emsp; You can also set a flag to determine how the insert is handled. These flags are stored on the QComboBox class itself and are listed below—
