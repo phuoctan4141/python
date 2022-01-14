@@ -61,3 +61,22 @@ flags. This means you can test state using state == Qt.Checked.*
 
 🚀 Run [widgets_QCheckBox.py](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Widgets/widgets_QCheckBox.py)
 
+## QComboBox
+**Infor** : *You have probably seen the combo box used for selection of
+font faces, or size, in word processing applications. Although
+Qt actually provides a specific font-selection combo box as
+QFontComboBox.*
+
+&emsp; You can add items to a QComboBox by passing a list of strings to .addItems(). Items will be added in the order they are provided. \
+&emsp; QComboBox can also be editable, allowing users to enter values not currently in the list and either have them inserted, or simply used as a value. To make the box editable: ``` widget.setEditable(True) ``` \
+&emsp; You can also set a flag to determine how the insert is handled. These flags are stored on the QComboBox class itself and are listed below—
+| Flag | Behavior |
+| --- | --- |
+| QComboBox.NoInsert | No insert |
+| QComboBox.InsertAtTop | Insert as first item |
+| QComboBox.InsertAtCurrent | Replace currently selected item |
+| QComboBox.InsertAtBottom | Insert after last item |
+| QComboBox.InsertAfterCurrent | Insert after current item |
+| QComboBox.InsertBeforeCurrent | Insert before current item |
+| QComboBox.InsertAlphabetically | Insert in alphabetical order |
+
