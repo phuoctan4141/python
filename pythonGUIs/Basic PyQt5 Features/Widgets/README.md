@@ -17,7 +17,7 @@ In Qt widget is the name given to a component of the UI that the user can intera
 | Qt.AlignBottom | Aligns with the bottom. |
 | Qt.AlignVCenter | Centers vertically in the available space. |
 
-You can combine flags together using pipes (|), however note that you can only use one vertical or horizontal alignment flag at a time.
+&emsp; You can combine flags together using pipes (|), however note that you can only use one vertical or horizontal alignment flag at a time.
 ``` align_top_left = Qt.AlignLeft | Qt.AlignTop ```
 
 **Qt Flags** :
@@ -29,3 +29,12 @@ By ORing together we get the value 0b0101 representing 'bottom left'.*
 | Flag | Behavior |
 | --- | --- |
 | Qt.AlignCenter Centers | horizontally and vertically |
+
+&emsp; Weirdly, you can also use QLabel to display an image using the .setPixmap() method. This accepts an pixmap (a pixel array), which you can create by passing an image filename to QPixmap. \
+&emsp; By default the image scales while maintaining its aspect ratio. If you want it to stretch and scale to fit the window completely you can set .setScaledContents(True) on the QLabel.
+| .setScaledContents(False) | .setScaledContents(True) |
+| --- | --- |
+| ![True](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Widgets/images/widgets_QLabel_QPixmap_False.png) | ![False](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Widgets/images/widgets_QLabel_QPixmap_True.png) |
+🚀 Run widgets_QLabel_QPixmap.py
+
+
