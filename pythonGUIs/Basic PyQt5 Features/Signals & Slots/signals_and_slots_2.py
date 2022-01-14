@@ -26,3 +26,7 @@ app = QApplication(sys.argv)
 window = MainWindow()
 window.show()
 app.exec_()
+
+# <1> We need to be able to access the button in our the_button_was_clicked method, so we keep a reference to it on self.
+# <2> You can change the text of a button by passing a str to .setText().
+# <3> To disable a button call .setEnabled() with False.
