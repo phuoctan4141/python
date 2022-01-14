@@ -111,8 +111,7 @@ which is often more useful.
 
 &emsp; You can add items to a QComboBox by passing a list of strings to .addItems(). Items will be added in the order they are provided. \
 &emsp; QComboBox can also be editable, allowing users to enter values not currently in the list and either have them inserted, or simply used as a value. To make the box editable: ``` widget.setEditable(True) ``` \
-&emsp; You can also set a flag to determine how the insert is handled. 
-### These flags are stored on the QComboBox class itself and are listed below—
+&emsp; You can also set a flag to determine how the insert is handled. These flags are stored on the QComboBox class itself and are listed below—
 | Flag | Behavior |
 | --- | --- |
 | QComboBox.NoInsert | No insert |
