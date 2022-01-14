@@ -35,6 +35,7 @@ By ORing together we get the value 0b0101 representing 'bottom left'.*
 | .setScaledContents(False) | .setScaledContents(True) |
 | --- | --- |
 | ![True](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Widgets/images/widgets_QLabel_QPixmap_False.png) | ![False](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Widgets/images/widgets_QLabel_QPixmap_True.png) |
+
 🚀 Run widgets_QLabel_QPixmap.py
 
 
