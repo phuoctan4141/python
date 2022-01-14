@@ -122,3 +122,6 @@ which is often more useful.
 | QComboBox.InsertBeforeCurrent | Insert before current item |
 | QComboBox.InsertAlphabetically | Insert in alphabetical order |
 
+&emsp; To use these, apply the flag as follows: ``` widget.setInsertPolicy(QComboBox.InsertAlphabetically) ``` \
+&emsp; You can also limit the number of items allowed in the box by using .setMaxCount, e.g. ``` widget.setMaxCount(10) ``` \
+
