@@ -127,3 +127,48 @@ which is often more useful.
 &emsp; To use these, apply the flag as follows: ``` widget.setInsertPolicy(QComboBox.InsertAlphabetically) ``` \
 &emsp; You can also limit the number of items allowed in the box by using .setMaxCount, e.g. ``` widget.setMaxCount(10) ``` \
 🚀 Run [widgets_QComboBox_1.py](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Widgets/widgets_QComboBox_1.py) to test them!
+
+## QListBox
+This widget is similar to QComboBox, except options are presented as a scrollable list of items. It also supports selection of multiple items at once. A QListBox offers an currentItemChanged signal which sends the QListItem (the element of the list box), and a currentTextChanged signal which sends the text of the current item.
+
+```
+import sys
+from PyQt5.QtWidgets import QApplication, QListWidget, QMainWindow
+
+
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+
+        self.setWindowTitle("My App")
+
+        widget = QListWidget()
+        widget.addItems(["One", "Two", "Three"])
+        
+        # In QListWidget there are two separate signals for the item, and the str
+        widget.currentItemChanged.connect(self.index_changed)
+        widget.currentTextChanged.connect(self.text_changed)
+
+        self.setCentralWidget(widget)
+
+    def index_changed(self, i):  # Not an index, i is a QListItem
+        print(i.text())
+
+    def text_changed(self, s):  # s is a str
+        print(s)
+
+
+app = QApplication(sys.argv)
+window = MainWindow()
+window.show()
+app.exec_()
+```
+
+🚀 Run it! You’ll see the same three items, now in a list. The selected item (if any) is highlighted.
+
+## QLineEdit
+&emsp; You can set a maximum length for the text field by using .setMaxLength. Placeholder text, which is text shown until something is entered by the user can be added using .setPlaceholderText. \
+&emsp; The QLineEdit has a number of signals available for different editing events including when return is pressed (by the user), when the user selection is changed. There are also two edit signals, one for when the text in the box has been edited and one for when it has been changed. The distinction here is between user edits and programmatic changes. The textEdited signal is only sent when the user edits text. \
+&emsp; Additionally, it is possible to perform input validation using an input mask to define which characters are supported and where. This can be applied to the field as follows: ``` widget.setInputMask('000.000.000.000;_') ``` . The above would allow a series of 3-digit numbers separated with periods, and could therefore be used to validate IPv4 addresses.
+
+## QSpinBox and QDoubleSpinBox
