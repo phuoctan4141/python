@@ -1,5 +1,4 @@
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton
-
 import sys
 from random import choice
 
