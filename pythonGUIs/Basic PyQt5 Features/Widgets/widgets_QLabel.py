@@ -22,3 +22,6 @@ app = QApplication(sys.argv)
 window = MainWindow()
 window.show()
 app.exec_()
+
+# <1> We get the current font, using <widget>.font(), modify it and then apply it back. This ensures the font face remains in keeping with the desktop conventions.
+# <2> The alignment is specified by using a flag from the Qt. namespace.
