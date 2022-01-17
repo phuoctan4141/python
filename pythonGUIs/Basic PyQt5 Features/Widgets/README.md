@@ -335,3 +335,4 @@ app.exec_()
 You can also construct a slider with a vertical or horizontal orientation by passing the orientation in as you create it. The orientation flags are defined in
 the Qt. namespace: ``` widget.QSlider(Qt.Vertical) ``` OR ``` widget.QSlider(Qt.Horizontal) ```
 
+## QDial
