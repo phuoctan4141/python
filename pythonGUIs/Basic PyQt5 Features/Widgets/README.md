@@ -332,7 +332,54 @@ app.exec_()
 
 🚀 Run it! You’ll see a slider widget. Drag the slider to change the value.
 
-You can also construct a slider with a vertical or horizontal orientation by passing the orientation in as you create it. The orientation flags are defined in
+&emsp; You can also construct a slider with a vertical or horizontal orientation by passing the orientation in as you create it. The orientation flags are defined in
 the Qt. namespace: ``` widget.QSlider(Qt.Vertical) ``` OR ``` widget.QSlider(Qt.Horizontal) ```
 
 ## QDial
+&emsp; The QDial is a rotatable widget that functions just like the slider, but appears as an analogue dial.
+
+```
+import sys
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QApplication, QDial, QMainWindow
+
+
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+
+        self.setWindowTitle("My App")
+
+        widget = QDial()
+        widget.setRange(-10, 100)
+        widget.setSingleStep(1)
+
+        widget.valueChanged.connect(self.value_changed)
+        widget.sliderMoved.connect(self.slider_position)
+        widget.sliderPressed.connect(self.slider_pressed)
+        widget.sliderReleased.connect(self.slider_released)
+
+        self.setCentralWidget(widget)
+
+    def value_changed(self, i):
+        print(i)
+
+    def slider_position(self, p):
+        print("position", p)
+
+    def slider_pressed(self):
+        print("Pressed!")
+
+    def slider_released(self):
+        print("Released")
+
+
+app = QApplication(sys.argv)
+window = MainWindow()
+window.show()
+app.exec_()
+```
+
+🚀 Run it! You’ll see a dial, rotate it to select a number from the range.
+
+The signals are the same as for QSlider and retain the same names (e.g. .sliderMoved).
