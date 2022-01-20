@@ -92,11 +92,7 @@ app.exec_()
 &emsp; For more complex layouts you can nest layouts inside one another using
 .addLayout on a layout. Below we add a QVBoxLayout into the main QHBoxLayout.
 If we add some widgets to the QVBoxLayout, they’ll be arranged vertically in the
-first slot of the parent layout.
-
-```
-```
-
+first slot of the parent layout. \
 &emsp; You can set the spacing around the layout using .setContentMargins or set the
 spacing between elements using .setSpacing. 
 ```
@@ -104,7 +100,10 @@ layout1.setContentsMargins(0,0,0,0)
 layout1.setSpacing(20)
 ```
 
-| | |
+| without spacing and margins
+around the widgets | with spacing and margins
+around the widgets |
 | --- | --- |
 | ![Nested QHBoxLayout and QVBoxLayout layouts](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Layouts/images/Nested%20QHBoxLayout%20and%20QVBoxLayout%20layouts.png) | ![Nested QHBoxLayout and QVBoxLayout layouts with spacing and margins](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Layouts/images/Nested%20QHBoxLayout%20and%20QVBoxLayout%20layouts%20with%20spacing%20and%20margins.png) |
 
+🚀 Run [layout_Nesting](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Layouts/layout_Nesting.py)!
