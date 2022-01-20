@@ -100,9 +100,7 @@ layout1.setContentsMargins(0,0,0,0)
 layout1.setSpacing(20)
 ```
 
-| without spacing and margins
-around the widgets | with spacing and margins
-around the widgets |
+| a | a |
 | --- | --- |
 | ![Nested QHBoxLayout and QVBoxLayout layouts](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Layouts/images/Nested%20QHBoxLayout%20and%20QVBoxLayout%20layouts.png) | ![Nested QHBoxLayout and QVBoxLayout layouts with spacing and margins](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Layouts/images/Nested%20QHBoxLayout%20and%20QVBoxLayout%20layouts%20with%20spacing%20and%20margins.png) |
 
