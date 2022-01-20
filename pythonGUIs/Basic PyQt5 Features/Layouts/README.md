@@ -105,3 +105,42 @@ layout1.setSpacing(20)
 | ![Nested QHBoxLayout and QVBoxLayout layouts](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Layouts/images/Nested%20QHBoxLayout%20and%20QVBoxLayout%20layouts.png) | ![Nested QHBoxLayout and QVBoxLayout layouts with spacing and margins](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Layouts/images/Nested%20QHBoxLayout%20and%20QVBoxLayout%20layouts%20with%20spacing%20and%20margins.png) |
 
 🚀 Run [layout_Nesting](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Layouts/layout_Nesting.py)!
+
+## QGridLayout widgets arranged in a grid
+&emsp; QGridLayout allows you to position items specifically in a grid. You specify row
+and column positions for each widget. You can skip elements, and they will
+be left empty.
+
+```
+import sys
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QApplication, QGridLayout, QLabel, QMainWindow, QWidget
+from layout_colorwidget import Color
+
+
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+
+        self.setWindowTitle("My App")
+
+        layout = QGridLayout()
+
+        layout.addWidget(Color("red"), 0, 0)
+        layout.addWidget(Color("green"), 1, 0)
+        layout.addWidget(Color("blue"), 1, 1)
+        layout.addWidget(Color("purple"), 2, 1)
+
+        widget = QWidget()
+        widget.setLayout(layout)
+        self.setCentralWidget(widget)
+
+
+app = QApplication(sys.argv)
+window = MainWindow()
+window.show()
+app.exec_()
+```
+
+🚀 Run  it! You should see the widgets arranged in a grid, aligned despite missing entries.
+
