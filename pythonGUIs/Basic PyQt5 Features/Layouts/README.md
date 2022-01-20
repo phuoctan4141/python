@@ -79,3 +79,12 @@ app.exec_()
 
 🚀 Run it! Three Color widgets arranged vertically in a QVBoxLayout. Notice the border now visible around the widget.
 
+## QHBoxLayout horizontally arranged widgets
+
+QHBoxLayout is the same, except moving horizontally. Adding a widget adds it to the right hand side.
+
+![ A QHBoxLayout, filled from left to right](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Layouts/images/A%20QHBoxLayout%2C%20filled%20from%20left%20to%20right.png)
+
+To use it we can simply change the QVBoxLayout to a QHBoxLayout. The boxes now flow left to right.
+🚀 Run [layout_QHBoxLayout](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Layouts/layout_QHBoxLayout.py)! The widgets should arrange themselves horizontally.
+
