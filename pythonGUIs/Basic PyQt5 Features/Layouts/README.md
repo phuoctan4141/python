@@ -80,7 +80,6 @@ app.exec_()
 🚀 Run it! Three Color widgets arranged vertically in a QVBoxLayout. Notice the border now visible around the widget.
 
 ## QHBoxLayout horizontally arranged widgets
-
 &emsp; QHBoxLayout is the same, except moving horizontally. Adding a widget adds it to the right hand side.
 
 ![ A QHBoxLayout, filled from left to right](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Layouts/images/A%20QHBoxLayout%2C%20filled%20from%20left%20to%20right.png)
@@ -88,4 +87,24 @@ app.exec_()
 &emsp; To use it we can simply change the QVBoxLayout to a QHBoxLayout. The boxes now flow left to right.
 
 🚀 Run [layout_QHBoxLayout](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Layouts/layout_QHBoxLayout.py)! The widgets should arrange themselves horizontally.
+
+## Nesting layouts
+&emsp; For more complex layouts you can nest layouts inside one another using
+.addLayout on a layout. Below we add a QVBoxLayout into the main QHBoxLayout.
+If we add some widgets to the QVBoxLayout, they’ll be arranged vertically in the
+first slot of the parent layout.
+
+```
+```
+
+&emsp; You can set the spacing around the layout using .setContentMargins or set the
+spacing between elements using .setSpacing. 
+```
+layout1.setContentsMargins(0,0,0,0)
+layout1.setSpacing(20)
+```
+
+| | |
+| --- | --- |
+| ![Nested QHBoxLayout and QVBoxLayout layouts](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Layouts/images/Nested%20QHBoxLayout%20and%20QVBoxLayout%20layouts.png) | ![Nested QHBoxLayout and QVBoxLayout layouts with spacing and margins](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Layouts/images/Nested%20QHBoxLayout%20and%20QVBoxLayout%20layouts%20with%20spacing%20and%20margins.png) |
 
