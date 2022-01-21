@@ -273,3 +273,7 @@ app.exec_()
 ```
 
 🚀 Run  it!  The QTabWidget containing our widgets, with tabs shown on the left (West).
+
+&emsp; As you can see, it’s a little more straightforward — and a bit more attractive!
+You can set the position of the tabs using the cardinal directions and toggle whether tabs are moveable with .setMoveable
+
