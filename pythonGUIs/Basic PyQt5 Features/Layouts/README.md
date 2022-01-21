@@ -232,7 +232,7 @@ app.exec_()
 
 &emsp; Helpfully, Qt provides a built-in tab widget that provides this kind of layout
 out of the box - although it’s actually a widget, not a layout. Below the tab
-demo is recreated using QTabWidget
+demo is recreated using QTabWidget.
 
 ```
 import sys
