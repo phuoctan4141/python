@@ -161,3 +161,115 @@ with .setCentralWidget.
 is visible at any one time. You can control which widget to show at any time
 by using .setCurrentIndex() or .setCurrentWidget() to set the item by either
 the index (in order the widgets were added) or by the widget itself.
+
+```
+import sys
+
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import (
+    QApplication,
+    QHBoxLayout,
+    QLabel,
+    QMainWindow,
+    QPushButton,
+    QStackedLayout,
+    QVBoxLayout,
+    QWidget,
+)
+
+from layout_colorwidget import Color
+
+
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+
+        self.setWindowTitle("My App")
+
+        pagelayout = QVBoxLayout()
+        button_layout = QHBoxLayout()
+        self.stacklayout = QStackedLayout()
+
+        pagelayout.addLayout(button_layout)
+        pagelayout.addLayout(self.stacklayout)
+
+        btn = QPushButton("red")
+        btn.pressed.connect(self.activate_tab_1)
+        button_layout.addWidget(btn)
+        self.stacklayout.addWidget(Color("red"))
+
+        btn = QPushButton("green")
+        btn.pressed.connect(self.activate_tab_2)
+        button_layout.addWidget(btn)
+        self.stacklayout.addWidget(Color("green"))
+
+        btn = QPushButton("yellow")
+        btn.pressed.connect(self.activate_tab_3)
+        button_layout.addWidget(btn)
+        self.stacklayout.addWidget(Color("yellow"))
+
+        widget = QWidget()
+        widget.setLayout(pagelayout)
+        self.setCentralWidget(widget)
+
+    def activate_tab_1(self):
+        self.stacklayout.setCurrentIndex(0)
+
+    def activate_tab_2(self):
+        self.stacklayout.setCurrentIndex(1)
+
+    def activate_tab_3(self):
+        self.stacklayout.setCurrentIndex(2)
+
+
+app = QApplication(sys.argv)
+window = MainWindow()
+window.show()
+app.exec_()
+```
+
+🚀 Run  it! You’ll can now change the visible widget with the button.
+
+&emsp; Helpfully, Qt provides a built-in tab widget that provides this kind of layout
+out of the box - although it’s actually a widget, not a layout. Below the tab
+demo is recreated using QTabWidget
+
+```
+import sys
+
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import (
+    QApplication,
+    QLabel,
+    QMainWindow,
+    QPushButton,
+    QTabWidget,
+    QWidget,
+)
+
+from layout_colorwidget import Color
+
+
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+
+        self.setWindowTitle("My App")
+
+        tabs = QTabWidget()
+        tabs.setTabPosition(QTabWidget.West)
+        tabs.setMovable(True)
+
+        for n, color in enumerate(["red", "green", "blue", "yellow"]):
+            tabs.addTab(Color(color), color)
+
+        self.setCentralWidget(tabs)
+
+
+app = QApplication(sys.argv)
+window = MainWindow()
+window.show()
+app.exec_()
+```
+
+🚀 Run  it!  The QTabWidget containing our widgets, with tabs shown on the left (West).
