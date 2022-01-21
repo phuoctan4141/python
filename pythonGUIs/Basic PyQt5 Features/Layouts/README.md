@@ -144,3 +144,16 @@ app.exec_()
 
 🚀 Run  it! You should see the widgets arranged in a grid, aligned despite missing entries.
 
+## QStackedLayout multiple widgets in the same space
+&emsp; The final layout we’ll cover is the QStackedLayout. As described, this layout
+allows you to position elements directly in front of one another. You can then
+select which widget you want to show. You could use this for drawing layers
+in a graphics application, or for imitating a tabbed interface. Note there is
+also QStackedWidget which is a container widget that works in exactly the
+same way. This is useful if you want to add a stack directly to a QMainWindow
+with .setCentralWidget.
+
+|  in use only the uppermost widget is visible, which is by default the first widget added to the layout | with the 2nd (1) widget selected and brought to the front |
+| :---: | :---: |
+| ![](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Layouts/images/QStackedLayout%20by%20default%20the%20first%20widget%20added%20to%20the%20layout.png) | ![](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Layouts/images/QStackedLayout%20with%20the%202nd%20(1)%20widget%20selected%20and%20brought%20to%20the%20front.png) |
+
