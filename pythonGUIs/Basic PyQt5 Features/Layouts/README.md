@@ -157,3 +157,7 @@ with .setCentralWidget.
 | :---: | :---: |
 | ![](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Layouts/images/QStackedLayout%20by%20default%20the%20first%20widget%20added%20to%20the%20layout.png) | ![](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Layouts/images/QStackedLayout%20with%20the%202nd%20(1)%20widget%20selected%20and%20brought%20to%20the%20front.png) |
 
+&emsp; QStackedWidget is how tabbed views in applications work. Only one view ('tab')
+is visible at any one time. You can control which widget to show at any time
+by using .setCurrentIndex() or .setCurrentWidget() to set the item by either
+the index (in order the widgets were added) or by the widget itself.
