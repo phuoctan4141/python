@@ -89,3 +89,53 @@ passing self as a reference to our main window. Strangely for QAction the parent
 &emsp;  Next, we can opt to set a status tip — this text will be displayed on the status bar once we have one. Finally we connect the .triggered signal to the custom
 function. This signal will fire whenever the QAction is 'triggered' (or activated).
 
+Let’s add a statusbar. \
+&emsp; We create a status bar object by calling QStatusBar and passing the result into .setStatusBar. Since we don’t need to change the statusBar settings we can
+just pass it in as we create it. We can create and define the status bar in a single line:
+
+```
+import sys
+
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import (
+    QAction,
+    QApplication,
+    QLabel,
+    QMainWindow,
+    QStatusBar,
+    QToolBar,
+)
+
+
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+
+        self.setWindowTitle("My App")
+
+        label = QLabel("Hello!")
+        label.setAlignment(Qt.AlignCenter)
+
+        self.setCentralWidget(label)
+
+        toolbar = QToolBar("My main toolbar")
+        self.addToolBar(toolbar)
+
+        button_action = QAction("Your button", self)
+        button_action.setStatusTip("This is your button")
+        button_action.triggered.connect(self.onMyToolBarButtonClick)
+        toolbar.addAction(button_action)
+
+        self.setStatusBar(QStatusBar(self))
+
+    def onMyToolBarButtonClick(self, s):
+        print("click", s)
+
+
+app = QApplication(sys.argv)
+window = MainWindow()
+window.show()
+app.exec_()
+```
+
+🚀 Run it! Hover your mouse over the toolbar button and you will see the status text appear in the status bar at the bottom of the window.
