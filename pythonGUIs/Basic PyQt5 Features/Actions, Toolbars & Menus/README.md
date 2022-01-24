@@ -250,3 +250,87 @@ app.exec_()
 
 🚀 Run it! The QAction is now represented by an icon. Everything should function exactly as it did before.
 
+&emsp; Note that Qt uses your operating system default settings to determine
+whether to show an icon, text or an icon and text in the toolbar. But you can
+override this by using .setToolButtonStyle. This slot accepts any of the
+following flags from the Qt. namespace:
+
+| Flag | Behavior |
+| --- | --- |
+| Qt.ToolButtonIconOnly | Icon only, no text |
+| Qt.ToolButtonTextOnly | Text only, no icon |
+| Qt.ToolButtonTextBesideIcon | Icon and text, with text beside the icon |
+| Qt.ToolButtonTextUnderIcon | Icon and text, with text under the icon |
+| Qt.ToolButtonIconOnly | Icon only, no text |
+| Qt.ToolButtonFollowStyle | Follow the host desktop style |
+
+***The default value is Qt.ToolButtonFollowStyle, meaning that
+your application will default to following the standard/global
+setting for the desktop on which the application runs. This is
+generally recommended to make your application feel as
+native as possible.***
+
+&emsp; Next we’ll add a few more bits and bobs to the toolbar. We’ll add a second button and a checkbox widget. As mentioned you can literally put any widget in here, so feel free to go crazy. Don’t worry about the QCheckBox type, we’ll cover that later.
+
+```
+import sys
+
+from PyQt5.QtCore import QSize, Qt
+from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import (
+    QAction,
+    QApplication,
+    QCheckBox,
+    QLabel,
+    QMainWindow,
+    QStatusBar,
+    QToolBar,
+)
+
+
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+
+        self.setWindowTitle("My App")
+
+        label = QLabel("Hello!")
+        label.setAlignment(Qt.AlignCenter)
+
+        self.setCentralWidget(label)
+
+        toolbar = QToolBar("My main toolbar")
+        toolbar.setIconSize(QSize(16, 16))
+        self.addToolBar(toolbar)
+
+        button_action = QAction(QIcon("bug.png"), "Your button", self)
+        button_action.setStatusTip("This is your button")
+        button_action.triggered.connect(self.onMyToolBarButtonClick)
+        button_action.setCheckable(True)
+        toolbar.addAction(button_action)
+
+        toolbar.addSeparator()
+
+        button_action2 = QAction(QIcon("bug.png"), "Your button2", self)
+        button_action2.setStatusTip("This is your button2")
+        button_action2.triggered.connect(self.onMyToolBarButtonClick)
+        button_action2.setCheckable(True)
+        toolbar.addAction(button_action2)
+
+        toolbar.addWidget(QLabel("Hello"))
+        toolbar.addWidget(QCheckBox())
+
+        self.setStatusBar(QStatusBar(self))
+
+    def onMyToolBarButtonClick(self, s):
+        print("click", s)
+
+
+
+app = QApplication(sys.argv)
+window = MainWindow()
+window.show()
+app.exec_()
+```
+
+&emsp;  Run it! Now you see multiple buttons and a checkbox.
