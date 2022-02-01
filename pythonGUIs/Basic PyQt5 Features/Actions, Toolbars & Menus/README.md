@@ -650,7 +650,8 @@ the shortcut Ctrl + Alt + J users would have a harder time finding it, a
 harder time using it, and be less likely to save their documents.
 Arrange actions into logical groups. It is easier to find something
 among a small number of alternatives, than in a long list. It’s even
-easier to find if it is among similar things. \
+easier to find if it is among similar things.
+
 ![Grouped toolbars in Qt Designer](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Actions%2C%20Toolbars%20%26%20Menus/images/Grouped%20toolbars%20in%20Qt%20Designer.png)
 
 
