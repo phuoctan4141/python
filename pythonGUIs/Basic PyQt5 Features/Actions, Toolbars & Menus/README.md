@@ -552,11 +552,11 @@ window.show()
 app.exec_()
 ```
 
-&emsp; Finally we’ll add a keyboard shortcut to the QAction. You define a keyboard shortcut by passing setKeySequence() and passing in the key sequence. Any defined key sequences will appear in the menu. \
 **Hidden shortcuts** :
 *Note that the keyboard shortcut is associated with the
 QAction and will still work whether or not the QAction is added
 to a menu or a toolbar.* \
+&emsp; Finally we’ll add a keyboard shortcut to the QAction. You define a keyboard shortcut by passing setKeySequence() and passing in the key sequence. Any defined key sequences will appear in the menu. \
 &emsp; Key sequences can be defined in multiple ways - either by passing as text, using key names from the Qt namespace, or using the defined key sequences from the Qt namespace. Use the latter wherever you can to ensure compliance with the operating system standards.
 
 The completed code, showing the toolbar buttons and menus is shown below:
