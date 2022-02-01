@@ -480,3 +480,4 @@ app.exec_()
 
 🚀 Run it! You should see two menu items with a line between them.
 
+&emsp; You can also use ampersand to add accelerator keys to the menu to allow a single key to be used to jump to a menu item when it is open. Again this doesn’t work on macOS.
