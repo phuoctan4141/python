@@ -333,4 +333,80 @@ window.show()
 app.exec_()
 ```
 
-&emsp;  Run it! Now you see multiple buttons and a checkbox.
+&emsp; Run it! Now you see multiple buttons and a checkbox.
+
+## Menus
+&emsp; To create a menu, we create a menubar we call .menuBar() on the QMainWindow. We add a menu on our menu bar by calling .addMenu(), passing in the name of the menu. I’ve called it '&File'. The ampersand defines a quick key to jump to this menu when pressing Alt. \
+&emsp; This is where the power of actions comes in to play. We can reuse the already existing QAction to add the same function to the menu. To add an action you call .addAction passing in one of our defined actions.
+
+```
+import sys
+
+from PyQt5.QtCore import QSize, Qt
+from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import (
+    QAction,
+    QApplication,
+    QCheckBox,
+    QLabel,
+    QMainWindow,
+    QStatusBar,
+    QToolBar,
+)
+
+
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+
+        self.setWindowTitle("My App")
+
+        label = QLabel("Hello!")
+        label.setAlignment(Qt.AlignCenter)
+
+        self.setCentralWidget(label)
+
+        toolbar = QToolBar("My main toolbar")
+        toolbar.setIconSize(QSize(16, 16))
+        self.addToolBar(toolbar)
+
+        button_action = QAction(QIcon("bug.png"), "&Your button", self)
+        button_action.setStatusTip("This is your button")
+        button_action.triggered.connect(self.onMyToolBarButtonClick)
+        button_action.setCheckable(True)
+        toolbar.addAction(button_action)
+
+        toolbar.addSeparator()
+
+        button_action2 = QAction(QIcon("bug.png"), "Your &button2", self)
+        button_action2.setStatusTip("This is your button2")
+        button_action2.triggered.connect(self.onMyToolBarButtonClick)
+        button_action2.setCheckable(True)
+        toolbar.addAction(button_action2)
+
+        toolbar.addWidget(QLabel("Hello"))
+        toolbar.addWidget(QCheckBox())
+
+        self.setStatusBar(QStatusBar(self))
+
+        menu = self.menuBar()
+
+        file_menu = menu.addMenu("&File")
+        file_menu.addAction(button_action)
+
+    def onMyToolBarButtonClick(self, s):
+        print("click", s)
+
+
+app = QApplication(sys.argv)
+window = MainWindow()
+window.show()
+app.exec_()
+```
+
+&emsp; Click the item in the menu and you will notice that it is toggleable — it inherits the features of the QAction.
+
+&emsp; Let’s add some more things to the menu. Here we’ll add a separator to the menu, which will appear as a horizontal line in the menu, and then add the second QAction we created.
+
+```
+```
