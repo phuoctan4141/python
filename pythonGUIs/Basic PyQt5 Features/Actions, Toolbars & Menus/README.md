@@ -634,3 +634,31 @@ window.show()
 app.exec_()
 ```
 
+🖐 Organising menus & toolbars
+
+If your users can’t find your application’s actions, they can’t use your
+app to it’s full potential. Making actions discoverable is key to creating a
+user-friendly application. It is a common mistake to try and address this
+by adding actions everywhere and end up overwhelming and
+confusing your users. \
+Put common and necessary actions first, making sure they are easy to
+find and recall. Think of the File › Save in most editing applications.
+Quickly accessible at the top of the File menu and bound with a simple
+keyboard shortcut Ctrl + S . If Save file… was accessible through File ›
+Common operations › File operations › Active document › Save or
+the shortcut Ctrl + Alt + J users would have a harder time finding it, a
+harder time using it, and be less likely to save their documents.
+Arrange actions into logical groups. It is easier to find something
+among a small number of alternatives, than in a long list. It’s even
+easier to find if it is among similar things. \
+![Grouped toolbars in Qt Designer](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Actions%2C%20Toolbars%20%26%20Menus/images/Grouped%20toolbars%20in%20Qt%20Designer.png) \
+😊 DO
+• Organize your menus into a logical hierarchy.
+• Replicate the most common functions onto your toolbars.
+• Group toolbar actions logically.
+• Disable items in menus when they can’t be used.
+😒 DON’T
+• Add the same action to multiple menus.
+• Add all your menu actions onto the toolbar.
+• Use different names or icons for the same action in different places.
+• Remove items from your menus—disable them instead.
