@@ -480,4 +480,157 @@ app.exec_()
 
 🚀 Run it! You should see two menu items with a line between them.
 
-&emsp; You can also use ampersand to add accelerator keys to the menu to allow a single key to be used to jump to a menu item when it is open. Again this doesn’t work on macOS.
+&emsp; You can also use ampersand to add accelerator keys to the menu to allow a single key to be used to jump to a menu item when it is open. Again this doesn’t work on macOS. \
+&emsp; To add a submenu, you simply create a new menu by calling addMenu() on the parent menu. You can then add actions to it as normal:
+
+```
+import sys
+
+from PyQt5.QtCore import QSize, Qt
+from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import (
+    QAction,
+    QApplication,
+    QCheckBox,
+    QLabel,
+    QMainWindow,
+    QStatusBar,
+    QToolBar,
+)
+
+
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+
+        self.setWindowTitle("My App")
+
+        label = QLabel("Hello!")
+        label.setAlignment(Qt.AlignCenter)
+
+        self.setCentralWidget(label)
+
+        toolbar = QToolBar("My main toolbar")
+        toolbar.setIconSize(QSize(16, 16))
+        self.addToolBar(toolbar)
+
+        button_action = QAction(QIcon("bug.png"), "&Your button", self)
+        button_action.setStatusTip("This is your button")
+        button_action.triggered.connect(self.onMyToolBarButtonClick)
+        button_action.setCheckable(True)
+        toolbar.addAction(button_action)
+
+        toolbar.addSeparator()
+
+        button_action2 = QAction(QIcon("bug.png"), "Your &button2", self)
+        button_action2.setStatusTip("This is your button2")
+        button_action2.triggered.connect(self.onMyToolBarButtonClick)
+        button_action2.setCheckable(True)
+        toolbar.addAction(button_action2)
+
+        toolbar.addWidget(QLabel("Hello"))
+        toolbar.addWidget(QCheckBox())
+
+        self.setStatusBar(QStatusBar(self))
+
+        menu = self.menuBar()
+
+        file_menu = menu.addMenu("&File")
+        file_menu.addAction(button_action)
+        file_menu.addSeparator()
+
+        file_submenu = file_menu.addMenu("Submenu")
+        file_submenu.addAction(button_action2)
+
+    def onMyToolBarButtonClick(self, s):
+        print("click", s)
+
+
+app = QApplication(sys.argv)
+window = MainWindow()
+window.show()
+app.exec_()
+```
+
+&emsp; Finally we’ll add a keyboard shortcut to the QAction. You define a keyboard shortcut by passing setKeySequence() and passing in the key sequence. Any defined key sequences will appear in the menu. \
+**Hidden shortcuts** :
+*Note that the keyboard shortcut is associated with the
+QAction and will still work whether or not the QAction is added
+to a menu or a toolbar.* \
+&emsp; Key sequences can be defined in multiple ways - either by passing as text, using key names from the Qt namespace, or using the defined key sequences from the Qt namespace. Use the latter wherever you can to ensure compliance with the operating system standards.
+
+The completed code, showing the toolbar buttons and menus is shown below:
+
+```
+import sys
+
+from PyQt5.QtCore import QSize, Qt
+from PyQt5.QtGui import QIcon, QKeySequence
+from PyQt5.QtWidgets import (QAction, QApplication, QCheckBox, QLabel,
+                             QMainWindow, QStatusBar, QToolBar)
+
+
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+
+        self.setWindowTitle("My App")
+
+        label = QLabel("Hello!")
+
+        # The `Qt` namespace has a lot of attributes to customize
+        # widgets. See: http://doc.qt.io/qt-5/qt.html
+        label.setAlignment(Qt.AlignCenter)
+
+        # Set the central widget of the Window. Widget will expand
+        # to take up all the space in the window by default.
+        self.setCentralWidget(label)
+
+        toolbar = QToolBar("My main toolbar")
+        toolbar.setIconSize(QSize(16, 16))
+        self.addToolBar(toolbar)
+
+        button_action = QAction(QIcon("bug.png"), "&Your button", self)
+        button_action.setStatusTip("This is your button")
+        button_action.triggered.connect(self.onMyToolBarButtonClick)
+        button_action.setCheckable(True)
+        # You can enter keyboard shortcuts using key names (e.g. Ctrl+p)
+        # Qt.namespace identifiers (e.g. Qt.CTRL + Qt.Key_P)
+        # or system agnostic identifiers (e.g. QKeySequence.Print)
+        button_action.setShortcut(QKeySequence("Ctrl+p"))
+        toolbar.addAction(button_action)
+
+        toolbar.addSeparator()
+
+        button_action2 = QAction(QIcon("bug.png"), "Your &button2", self)
+        button_action2.setStatusTip("This is your button2")
+        button_action2.triggered.connect(self.onMyToolBarButtonClick)
+        button_action2.setCheckable(True)
+        toolbar.addAction(button_action)
+
+        toolbar.addWidget(QLabel("Hello"))
+        toolbar.addWidget(QCheckBox())
+
+        self.setStatusBar(QStatusBar(self))
+
+        menu = self.menuBar()
+
+        file_menu = menu.addMenu("&File")
+        file_menu.addAction(button_action)
+
+        file_menu.addSeparator()
+
+        file_submenu = file_menu.addMenu("Submenu")
+
+        file_submenu.addAction(button_action2)
+
+    def onMyToolBarButtonClick(self, s):
+        print("click", s)
+
+
+app = QApplication(sys.argv)
+window = MainWindow()
+window.show()
+app.exec_()
+```
+
