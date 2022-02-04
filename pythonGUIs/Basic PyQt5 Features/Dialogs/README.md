@@ -88,3 +88,32 @@ wouldn’t recommend it.* \
 The first step in creating a dialog button box is to define the buttons want to
 show, using namespace attributes from QDialogButtonBox. The full list of
 buttons available is below:
+| Button types |
+| --- |
+QDialogButtonBox.Ok
+QDialogButtonBox.Open
+QDialogButtonBox.Save
+QDialogButtonBox.Cancel
+QDialogButtonBox.Close
+QDialogButtonBox.Discard
+QDialogButtonBox.Apply
+QDialogButtonBox.Reset
+QDialogButtonBox.RestoreDefaults
+QDialogButtonBox.Help
+QDialogButtonBox.SaveAll
+QDialogButtonBox.Yes
+QDialogButtonBox.YesToAll
+QDialogButtonBox.No
+QDialogButtonBox.NoToAll
+QDialogButtonBox.Abort
+QDialogButtonBox.Retry
+QDialogButtonBox.Ignore
+QDialogButtonBox.NoButton
+| --- |
+
+These should be sufficient to create any dialog box you can think of. You can
+construct a line of multiple buttons by OR-ing them together using a pipe (|).
+Qt will handle the order automatically, according to platform standards. For
+example, to show an OK and a Cancel button we used:
+``` buttons = QDialogButtonBox.Ok | QDialogButtonBox.Cancel ``` \
+
