@@ -116,4 +116,45 @@ construct a line of multiple buttons by OR-ing them together using a pipe (|).
 Qt will handle the order automatically, according to platform standards. For
 example, to show an OK and a Cancel button we used:
 ``` buttons = QDialogButtonBox.Ok | QDialogButtonBox.Cancel ``` \
+The variable buttons now contains an integer value representing those two
+buttons. Next, we must create the QDialogButtonBox instance to hold the
+buttons. The flag for the buttons to display is passed in as the first parameter. \
+To make the buttons have any effect, you must connect the correct
+QDialogButtonBox signals to the slots on the dialog. In our case we’ve
+connected the .accepted and .rejected signals from the QDialogButtonBox to
+the handlers for .accept() and .reject() on our subclass of QDialog. \
+Lastly, to make the QDialogButtonBox appear in our dialog box we must add it
+to the dialog layout. So, as for the main window we create a layout, and add
+our QDialogButtonBox to it (QDialogButtonBox is a widget), and then set that
+layout on our dialog. \
+Finally, we launch the CustomDialog in our MainWindow.button_clicked slot.
+
+```
+def button_clicked(self, s):
+        print("click", s)
+
+        dlg = CustomDialog(self)
+        if dlg.exec_():
+            print("Success!")
+        else:
+            print("Cancel!")
+```
+
+🚀 Run [dialogs_2b](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Dialogs/dialogs_2b.py)! Click to launch the dialog and you will see a dialog box with buttons in it.
+
+## Simple message dialogs with QMessageBox
+&emsp; There are many dialogs which follow the simple pattern we just saw—a message with buttons with which you can accept or cancel the dialog. While you can construct these dialogs yourself, Qt also provides a built-in message dialog class called QMessageBox. This can be used to create information, warning, about or question dialogs. \
+The example below creates a simple QMessageBox and shows it.
+
+```
+    def button_clicked(self, s):
+        dlg = QMessageBox(self)
+        dlg.setWindowTitle("I have a question!")
+        dlg.setText("This is a simple dialog")
+        button = dlg.exec_()
+
+        if button == QMessageBox.Ok:
+            print("OK!")
+```
+
 
