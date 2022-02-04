@@ -130,7 +130,7 @@ layout on our dialog. \
 Finally, we launch the CustomDialog in our MainWindow.button_clicked slot.
 
 ```
-def button_clicked(self, s):
+    def button_clicked(self, s):
         print("click", s)
 
         dlg = CustomDialog(self)
@@ -157,4 +157,83 @@ The example below creates a simple QMessageBox and shows it.
             print("OK!")
 ```
 
+🚀 Run it! You’ll see a simple dialog with an OK button.
 
+&emsp; As with the dialog button box we looked at already, the buttons shown on a QMessageBox are also configured with a set of constants which can be combined with | to show multiple buttons. The full list of available button types is shown below:
+| Button types |
+| --- |
+QMessageBox.Ok
+QMessageBox.Open
+QMessageBox.Save
+QMessageBox.Cancel
+QMessageBox.Close
+QMessageBox.Discard
+QMessageBox.Apply
+QMessageBox.Reset
+QMessageBox.RestoreDefaults
+QMessageBox.Help
+QMessageBox.SaveAll
+QMessageBox.Yes
+QMessageBox.YesToAll
+QMessageBox.No
+QMessageBox.NoToAll
+QMessageBox.Abort
+QMessageBox.Retry
+QMessageBox.Ignore
+QMessageBox.NoButton
+| --- |
+
+You can also tweak the icon shown on the dialog by setting the icon with one of the following:
+|Icon state | Description |
+| --- | --- |
+| QMessageBox.NoIcon | The message box does not have an icon. |
+| QMessageBox.Question | The message is asking a question. |
+| QMessageBox.Information | The message is informational only. |
+| QMessageBox.Warning | The message is warning. |
+| QMessageBox.Critical | The message indicates a critical problem. |
+
+&emsp; For example, the following creates a question dialog with Yes and No buttons.
+
+```
+import sys
+
+from PyQt5.QtWidgets import QApplication, QDialog, QMainWindow, QMessageBox, QPushButton
+
+
+class MainWindow(QMainWindow):
+    # end::MainWindow[]
+    def __init__(self):
+        super().__init__()
+
+        self.setWindowTitle("My App")
+
+        button = QPushButton("Press me for a dialog!")
+        button.clicked.connect(self.button_clicked)
+        self.setCentralWidget(button)
+
+    # tag::button_clicked[]
+
+    # __init__ skipped for clarity
+    def button_clicked(self, s):
+        dlg = QMessageBox(self)
+        dlg.setWindowTitle("I have a question!")
+        dlg.setText("This is a question dialog")
+        dlg.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+        dlg.setIcon(QMessageBox.Question)
+        button = dlg.exec_()
+
+        if button == QMessageBox.Yes:
+            print("Yes!")
+        else:
+            print("No!")
+
+    # end::button_clicked[]
+
+
+app = QApplication(sys.argv)
+window = MainWindow()
+window.show()
+app.exec_()
+```
+
+🚀 Run it! You’ll see a question dialog with Yes and No buttons.
