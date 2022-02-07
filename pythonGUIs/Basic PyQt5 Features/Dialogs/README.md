@@ -265,7 +265,7 @@ QMessageBox.warning(parent, title, message)
 🚀 Run [dialogs_5](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Dialogs/dialogs_5.py)! You’ll see the same result, this time using the built in .question() method.
 
 &emsp; Notice that rather than call exec() we now simply call the dialog method and the dialog is created. The return value of each of the methods is the button which was pressed. We can detect what has been pressed by comparing the return value to the button constants. \
-The four information, question, warning and critical methods also accept optional buttons and defaultButton arguments which can be used to tweak the buttons shown on the dialog and select one by default. Generally though you don’t want to change this from the default.
+&emsp; The four information, question, warning and critical methods also accept optional buttons and defaultButton arguments which can be used to tweak the buttons shown on the dialog and select one by default. Generally though you don’t want to change this from the default.
 
 ```
     def button_clicked(self, s):
@@ -289,6 +289,48 @@ The four information, question, warning and critical methods also accept optiona
 🚀 Run [dialogs_6](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Dialogs/dialogs_6.py)! You’ll see a critical dialog with customized buttons.
 
 ## 🖐 Dialogs
-It’s particularly easy to create bad dialogs. From dialogs that trap users
+&emsp; It’s particularly easy to create bad dialogs. From dialogs that trap users
 with confusing options to nested never-ending popups. There are
 plenty of ways to hurt your users.
+
+![Some examples of bad dialogs](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Dialogs/images/Some%20examples%20of%20bad%20dialogs.png)
+
+&emsp; Dialog buttons are defined by system standards. You may never have
+noticed that the OK & Cancel buttons are in different locations on
+macOS & Linux vs. Windows, but your brain did. If you do not follow
+system standards, you’ll confuse your users, and make them make
+mistakes.
+
+![Dialog button order is platform dependent](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Dialogs/images/Dialog%20button%20order%20is%20platform%20dependent.png)
+
+&emsp; With Qt you get this consistency for free when using the built-in
+QDialogButtonBox controls. But you must use them! \
+&emsp; Error dialogs annoy users. When you show an error dialog you’re giving
+your users bad news. When you give someone bad news, you need to
+consider the impact it will have on them. \
+&emsp; Take for example this (thankfully imaginary) dialog produced when we
+encounter an error in a document. The dialog tells you there is a error,
+but neither what the consequences are or what to do about it. Reading
+this your users will ask (possibly scream) "…and now what?" \
+
+![An example of a bad error dialog](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Dialogs/images/An%20example%20of%20a%20bad%20error%20dialog.png)
+
+This real dialog from Acrobat Reader DC is better. This explains that
+there is an error, what the consequences may be, and potentially how
+to resolve it.
+
+![Adobe Acrobat Reader DC dialog](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Dialogs/images/Adobe%20Acrobat%20Reader%20DC%20dialog.png)
+
+&emsp; But this still isn’t perfect. The error is shown as an information dialog,
+which doesn’t suggest anything is wrong. The error is fired on every
+page, and can appear multiple times in a document—a warning dialog
+should be fired only once. The error could also be improved by making
+it clear that the error is permanent.
+
+![An improved version of the Adobe Acrobat Reader DC dialog](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Dialogs/images/An%20improved%20version%20of%20the%20Adobe%20Acrobat%20Reader%20DC%20dialog.png)
+
+💡 Good error messages should explain.
+[ ] What happened
+[ ] What was affected
+[ ] What are the consequences of it
+[ ] What can be done about it
