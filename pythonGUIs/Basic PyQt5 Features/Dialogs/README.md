@@ -183,7 +183,7 @@ QMessageBox.Ignore
 QMessageBox.NoButton
 | --- |
 
-You can also tweak the icon shown on the dialog by setting the icon with one of the following:
+&emsp; You can also tweak the icon shown on the dialog by setting the icon with one of the following:
 |Icon state | Description |
 | --- | --- |
 | QMessageBox.NoIcon | The message box does not have an icon. |
