@@ -311,7 +311,7 @@ consider the impact it will have on them. \
 &emsp; Take for example this (thankfully imaginary) dialog produced when we
 encounter an error in a document. The dialog tells you there is a error,
 but neither what the consequences are or what to do about it. Reading
-this your users will ask (possibly scream) "…and now what?" \
+this your users will ask (possibly scream) "…and now what?"
 
 ![An example of a bad error dialog](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Dialogs/images/An%20example%20of%20a%20bad%20error%20dialog.png)
 
@@ -330,7 +330,7 @@ it clear that the error is permanent.
 ![An improved version of the Adobe Acrobat Reader DC dialog](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Dialogs/images/An%20improved%20version%20of%20the%20Adobe%20Acrobat%20Reader%20DC%20dialog.png)
 
 💡 Good error messages should explain.
-[ ] What happened
-[ ] What was affected
-[ ] What are the consequences of it
-[ ] What can be done about it
+- [ ] What happened
+- [ ] What was affected
+- [ ] What are the consequences of it
+- [ ] What can be done about it
