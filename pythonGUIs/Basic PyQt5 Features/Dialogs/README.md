@@ -157,7 +157,7 @@ The example below creates a simple QMessageBox and shows it.
             print("OK!")
 ```
 
-🚀 Run it! You’ll see a simple dialog with an OK button.
+🚀 Run [dialogs_3](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Dialogs/dialogs_3.py)! You’ll see a simple dialog with an OK button.
 
 &emsp; As with the dialog button box we looked at already, the buttons shown on a QMessageBox are also configured with a set of constants which can be combined with | to show multiple buttons. The full list of available button types is shown below:
 | Button types |
@@ -237,3 +237,58 @@ app.exec_()
 ```
 
 🚀 Run it! You’ll see a question dialog with Yes and No buttons.
+
+## Built in QMessageBox dialogs
+&emsp; To make things even simpler the QMessageBox has a number of methods which can be used to construct these types of message dialog. These methods are shown below—
+
+```
+QMessageBox.about(parent, title, message)
+QMessageBox.critical(parent, title, message)
+QMessageBox.information(parent, title, message)
+QMessageBox.question(parent, title, message)
+QMessageBox.warning(parent, title, message)
+```
+
+&emsp; The parent parameter is the window which the dialog will be a child of. If you’re launching your dialog from your main window, you can just pass in self. The following example creates a question dialog, as before, with Yes and No buttons.
+
+```
+    def button_clicked(self, s):
+
+        button = QMessageBox.question(self, "Question dialog", "The longer message")
+
+        if button == QMessageBox.Yes:
+            print("Yes!")
+        else:
+            print("No!")
+```
+
+🚀 Run [dialogs_5](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Dialogs/dialogs_5.py)! You’ll see the same result, this time using the built in .question() method.
+
+&emsp; Notice that rather than call exec() we now simply call the dialog method and the dialog is created. The return value of each of the methods is the button which was pressed. We can detect what has been pressed by comparing the return value to the button constants. \
+The four information, question, warning and critical methods also accept optional buttons and defaultButton arguments which can be used to tweak the buttons shown on the dialog and select one by default. Generally though you don’t want to change this from the default.
+
+```
+    def button_clicked(self, s):
+
+        button = QMessageBox.critical(
+            self,
+            "Oh dear!",
+            "Something went very wrong.",
+            buttons=QMessageBox.Discard | QMessageBox.NoToAll | QMessageBox.Ignore,
+            defaultButton=QMessageBox.Discard,
+        )
+
+        if button == QMessageBox.Discard:
+            print("Discard!")
+        elif button == QMessageBox.NoToAll:
+            print("No to all!")
+        else:
+            print("Ignore!")
+```
+
+🚀 Run [dialogs_6](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Dialogs/dialogs_6.py)! You’ll see a critical dialog with customized buttons.
+
+## 🖐 Dialogs
+It’s particularly easy to create bad dialogs. From dialogs that trap users
+with confusing options to nested never-ending popups. There are
+plenty of ways to hurt your users.
