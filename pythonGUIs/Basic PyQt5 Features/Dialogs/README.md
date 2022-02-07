@@ -315,7 +315,7 @@ this your users will ask (possibly scream) "…and now what?"
 
 ![An example of a bad error dialog](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Dialogs/images/An%20example%20of%20a%20bad%20error%20dialog.png)
 
-This real dialog from Acrobat Reader DC is better. This explains that
+&emsp; This real dialog from Acrobat Reader DC is better. This explains that
 there is an error, what the consequences may be, and potentially how
 to resolve it.
 
