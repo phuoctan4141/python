@@ -168,5 +168,127 @@ than None the first test will not pass, and we will not be able to recreate a wi
 &emsp; In the following example we create our external window in the __init__ block for the main window, and then our show_new_window method simply calls self.w.show() to display it.
 
 ```
+import sys
+from random import randint
+
+from PyQt5.QtWidgets import (
+    QApplication,
+    QLabel,
+    QMainWindow,
+    QPushButton,
+    QVBoxLayout,
+    QWidget,
+)
+
+
+class AnotherWindow(QWidget):
+    """
+    This "window" is a QWidget. If it has no parent, it 
+    will appear as a free-floating window.
+    """
+
+    def __init__(self):
+        super().__init__()
+        layout = QVBoxLayout()
+        self.label = QLabel("Another Window % d" % randint(0, 100))
+        layout.addWidget(self.label)
+        self.setLayout(layout)
+
+
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.w = AnotherWindow()
+        self.button = QPushButton("Push for Window")
+        self.button.clicked.connect(self.show_new_window)
+        self.setCentralWidget(self.button)
+
+    def show_new_window(self, checked):
+        self.w.show()
+
+
+app = QApplication(sys.argv)
+w = MainWindow()
+w.show()
+app.exec_()
+```
+
+🚀 If you run this, clicking on the button will show the window as before. Note that the window is only created once and calling .show() on an already visible window has no effect.
+
+## Showing & hiding windows
+&emsp; Once you have created a persistent window you can show and hide it without recreating it. Once hidden the window still exists, but will not be 
+visible and accept mouse/other input. However you can continue to call methods on the window and update it’s state – including changing it’s
+appearance. Once re-shown any changes will be visible. \
+&emsp; Below we update our main window to create a toggle_window method whichchecks, using .isVisible() to see if the window is currently visible. If it is not, it 
+is shown using .show() , if it is already visible we hide it with .hide().
 
 ```
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.w = AnotherWindow()
+        self.button = QPushButton("Push for Window")
+        self.button.clicked.connect(self.toggle_window)
+        self.setCentralWidget(self.button)
+
+    def toggle_window(self, checked):
+        if self.w.isVisible():
+            self.w.hide()
+
+        else:
+            self.w.show()
+```
+
+&emsp; The complete working example of this persistent window and toggling the show/hide state is shown below.
+
+```
+import sys
+from random import randint
+
+from PyQt5.QtWidgets import (
+    QApplication,
+    QLabel,
+    QMainWindow,
+    QPushButton,
+    QVBoxLayout,
+    QWidget,
+)
+
+
+class AnotherWindow(QWidget):
+    """
+    This "window" is a QWidget. If it has no parent, it 
+    will appear as a free-floating window.
+    """
+
+    def __init__(self):
+        super().__init__()
+        layout = QVBoxLayout()
+        self.label = QLabel("Another Window % d" % randint(0, 100))
+        layout.addWidget(self.label)
+        self.setLayout(layout)
+
+
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.w = AnotherWindow()
+        self.button = QPushButton("Push for Window")
+        self.button.clicked.connect(self.toggle_window)
+        self.setCentralWidget(self.button)
+
+    def toggle_window(self, checked):
+        if self.w.isVisible():
+            self.w.hide()
+
+        else:
+            self.w.show()
+
+
+app = QApplication(sys.argv)
+w = MainWindow()
+w.show()
+app.exec_()
+```
+
+🚀 Again, the window is only created once – the window’s __init__ block is not re-run (so the number in the label does not change) each time the window is re-shown.
