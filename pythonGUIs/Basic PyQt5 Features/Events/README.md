@@ -67,7 +67,7 @@ depending on what exactly has occurred. We’ll look at the mouse event
 objects next.
 
 ## Mouse events
-All mouse events in Qt are tracked with the QMouseEvent object, with
+&emsp; All mouse events in Qt are tracked with the QMouseEvent object, with
 information about the event being readable from the following event
 methods.
 | Method | Returns |
@@ -80,12 +80,12 @@ methods.
 | .pos() | Widget-relative position as a QPoint integer |
 | .posF() | Widget-relative position as a QPointF float |
 
-You can use these methods within an event handler to respond to different
+&emsp; You can use these methods within an event handler to respond to different
 events differently, or ignore them completely. The positional methods
 provide both global and local (widget-relative) position information as QPoint
 objects, while buttons are reported using the mouse button types from the
 Qt namespace. \
-For example, the following allows us to respond differently to a left, right or
+&emsp; For example, the following allows us to respond differently to a left, right or
 middle click on the window.
 
 ```
@@ -129,3 +129,74 @@ reversed, i.e. pressing the right-most button will return
 mouse orientation in your code.*
 
 The button identifiers are defined in the Qt namespace, as follows—
+| Identifier | Value (binary) | Represents |
+| --- | --- | --- |
+| Qt.NoButton | 0 (000) | No button pressed, or the event is not related to button press. |
+| Qt.LeftButton | 1 (001) | The left button is pressed |
+| Qt.RightButton | 2 (010) | The right button is pressed. |
+| Qt.MiddleButton | 4 (100) | The middle button is pressed. |
+
+For a more in-depth look at how this all works check out Enums & the Qt Namespace later.
+
+## Context menus
+&emsp; Context menus are small context-sensitive menus which typically appear
+when right clicking on a window. Qt has support for generating these
+menus, and widgets have a specific event used to trigger them. In the
+following example we’re going to intercept the .contextMenuEvent a
+QMainWindow. This event is fired whenever a context menu is about to be
+shown, and is passed a single value event of type QContextMenuEvent. \
+&emsp; To intercept the event, we simply override the object method with our new
+method of the same name. So in this case we can create a method on our
+MainWindow subclass with the name contextMenuEvent and it will receive all
+events of this type.
+
+```
+    def contextMenuEvent(self, e):
+        context = QMenu(self)
+        context.addAction(QAction("test 1", self))
+        context.addAction(QAction("test 2", self))
+        context.addAction(QAction("test 3", self))
+        context.exec_(e.globalPos())
+```
+
+If you run the above code and right-click within the window, you’ll see a
+context menu appear. You can set up .triggered slots on your menu actions
+as normal (and re-use actions defined for menus and toolbars).
+
+&emsp; When passing the initial position to the exec_ function, this
+this case we pass self as the parent, so we can use the global
+must be relative to the parent passed in while defining. In
+position. \
+&emsp; Just for completeness, there is actually a signal-based approach to creating context menus.
+
+```
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.show()
+
+        self.setContextMenuPolicy(Qt.CustomContextMenu)
+        self.customContextMenuRequested.connect(self.on_context_menu)
+
+    def on_context_menu(self, pos):
+        context = QMenu(self)
+        context.addAction(QAction("test 1", self))
+        context.addAction(QAction("test 2", self))
+        context.addAction(QAction("test 3", self))
+        context.exec_(self.mapToGlobal(pos))
+```
+
+🚀 Run and It’s entirely up to you which you choose.
+
+## Event hierarchy
+&emsp; In pyqt5 every widget is part of two distinct hierarchies: the Python object
+hierarchy, and the Qt layout hierarchy. How you respond or ignore events can
+affect how your UI behaves.
+
+## Python inheritance forwarding
+&emsp; Often you may want to intercept an event, do something with it, yet still
+trigger the default event handling behavior. If your object is inherited from a
+standard widget, it will likely have sensible behavior implemented by default.
+You can trigger this by calling up to the parent implementation using
+super(). \
+&emsp; This is the Python parent class, not the pyqt5 .parent().
