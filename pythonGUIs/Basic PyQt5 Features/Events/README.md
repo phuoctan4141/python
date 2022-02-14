@@ -200,3 +200,47 @@ standard widget, it will likely have sensible behavior implemented by default.
 You can trigger this by calling up to the parent implementation using
 super(). \
 &emsp; This is the Python parent class, not the pyqt5 .parent().
+
+```
+def mousePressEvent(self, event):
+  print("Mouse pressed!")
+  super(self, MainWindow).contextMenuEvent(event)
+````
+
+The event will continue to behave as normal, yet you’ve added some non-interfering behavior.
+
+## Layout forwarding
+&emsp; When you add a widget to your application, it also gets another parent from
+the layout. The parent of a widget can be found by calling .parent().
+Sometimes you specify these parents manually, such as for QMenu or QDialog,
+often it is automatic. When you add a widget to your main window for
+example, the main window will become the widget’s parent. \
+&emsp; When events are created for user interaction with the UI, these events are
+passed to the uppermost widget in the UI. So, if you have a button on a
+window, and click the button, the button will receive the event first. \
+&emsp; The the first widget cannot handle the event, or chooses not to, the event will
+bubble up to the parent widget, which will be given a turn. This bubbling
+continues all the way up nested widgets, until the event is handled or it
+reaches the main window. \
+&emsp; In your own event handlers you can choose to mark an event as handled
+calling .accept()—
+
+```
+  class CustomButton(Qbutton)
+    def mousePressEvent(self, e):
+        e.accept()
+```
+
+&emsp; Alternatively, you can mark it as unhandled by calling .ignore() on the event
+object. In this case the event will continue to bubble up the hierarchy.
+
+```
+  class CustomButton(Qbutton)
+    def event(self, e):
+        e.accept()
+```
+
+&emsp; If you want your widget to appear transparent to events, you can safely
+ignore events which you’ve actually responded to in some way. Similarly, you
+can choose to accept events you are not responding to in order to silence
+them.
