@@ -29,7 +29,7 @@ class Color(QWidget):
         self.setPalette(palette)
 ```
 
-&emsp; In this code we subclass QWidget to create our own custom widget Color. We
+In this code we subclass QWidget to create our own custom widget Color. We
 accept a single parameter when creating the widget — color (a str). We first
 set .setAutoFillBackground to True to tell the widget to automatically fill it’s
 background with the window color. Next we change the widget’s
@@ -41,11 +41,11 @@ that is filled with a solid color, that we specify when we create it.
 
 ## QVBoxLayout vertically arranged widgets
 
-&emsp; With QVBoxLayout you arrange widgets one above the other linearly. Adding a widget adds it to the bottom of the column.
+With QVBoxLayout you arrange widgets one above the other linearly. Adding a widget adds it to the bottom of the column.
 
 ![A QVBoxLayout, filled from top to bottom](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Layouts/images/A%20QVBoxLayout%2C%20filled%20from%20top%20to%20bottom.png)
 
-&emsp; Lets add our widget to a layout. Note that in order to add a layout to the QMainWindow we need to apply it to a dummy QWidget. This allows us to then use .setCentralWidget to apply the widget (and the layout) to the window. Our colored widgets will arrange themselves in the layout, contained within the QWidget in the window.
+Lets add our widget to a layout. Note that in order to add a layout to the QMainWindow we need to apply it to a dummy QWidget. This allows us to then use .setCentralWidget to apply the widget (and the layout) to the window. Our colored widgets will arrange themselves in the layout, contained within the QWidget in the window.
 
 ```
 import sys
@@ -80,7 +80,7 @@ app.exec_()
 🚀 Run it! Three Color widgets arranged vertically in a QVBoxLayout. Notice the border now visible around the widget.
 
 ## QHBoxLayout horizontally arranged widgets
-&emsp; QHBoxLayout is the same, except moving horizontally. Adding a widget adds it to the right hand side.
+QHBoxLayout is the same, except moving horizontally. Adding a widget adds it to the right hand side.
 
 ![ A QHBoxLayout, filled from left to right](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Layouts/images/A%20QHBoxLayout%2C%20filled%20from%20left%20to%20right.png)
 
@@ -89,10 +89,11 @@ app.exec_()
 🚀 Run [layout_QHBoxLayout](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Layouts/layout_QHBoxLayout.py)! The widgets should arrange themselves horizontally.
 
 ## Nesting layouts
-&emsp; For more complex layouts you can nest layouts inside one another using
+For more complex layouts you can nest layouts inside one another using
 .addLayout on a layout. Below we add a QVBoxLayout into the main QHBoxLayout.
 If we add some widgets to the QVBoxLayout, they’ll be arranged vertically in the
-first slot of the parent layout. \
+first slot of the parent layout. 
+
 &emsp; You can set the spacing around the layout using .setContentMargins or set the
 spacing between elements using .setSpacing. 
 ```
@@ -107,7 +108,7 @@ layout1.setSpacing(20)
 🚀 Run [layout_Nesting](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Layouts/layout_Nesting.py)!
 
 ## QGridLayout widgets arranged in a grid
-&emsp; QGridLayout allows you to position items specifically in a grid. You specify row
+QGridLayout allows you to position items specifically in a grid. You specify row
 and column positions for each widget. You can skip elements, and they will
 be left empty.
 
@@ -145,7 +146,7 @@ app.exec_()
 🚀 Run  it! You should see the widgets arranged in a grid, aligned despite missing entries.
 
 ## QStackedLayout multiple widgets in the same space
-&emsp; The final layout we’ll cover is the QStackedLayout. As described, this layout
+The final layout we’ll cover is the QStackedLayout. As described, this layout
 allows you to position elements directly in front of one another. You can then
 select which widget you want to show. You could use this for drawing layers
 in a graphics application, or for imitating a tabbed interface. Note there is
@@ -157,7 +158,7 @@ with .setCentralWidget.
 | :---: | :---: |
 | ![](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Layouts/images/QStackedLayout%20by%20default%20the%20first%20widget%20added%20to%20the%20layout.png) | ![](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Layouts/images/QStackedLayout%20with%20the%202nd%20(1)%20widget%20selected%20and%20brought%20to%20the%20front.png) |
 
-&emsp; QStackedWidget is how tabbed views in applications work. Only one view ('tab')
+QStackedWidget is how tabbed views in applications work. Only one view ('tab')
 is visible at any one time. You can control which widget to show at any time
 by using .setCurrentIndex() or .setCurrentWidget() to set the item by either
 the index (in order the widgets were added) or by the widget itself.
@@ -230,7 +231,7 @@ app.exec_()
 
 🚀 Run  it! You’ll can now change the visible widget with the button.
 
-&emsp; Helpfully, Qt provides a built-in tab widget that provides this kind of layout
+Helpfully, Qt provides a built-in tab widget that provides this kind of layout
 out of the box - although it’s actually a widget, not a layout. Below the tab
 demo is recreated using QTabWidget.
 
@@ -274,6 +275,6 @@ app.exec_()
 
 🚀 Run  it!  The QTabWidget containing our widgets, with tabs shown on the left (West).
 
-&emsp; As you can see, it’s a little more straightforward — and a bit more attractive!
+As you can see, it’s a little more straightforward — and a bit more attractive!
 You can set the position of the tabs using the cardinal directions and toggle whether tabs are moveable with .setMoveable
 
