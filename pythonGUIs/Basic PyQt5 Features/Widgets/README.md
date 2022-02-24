@@ -17,7 +17,7 @@ In Qt widget is the name given to a component of the UI that the user can intera
 | Qt.AlignBottom | Aligns with the bottom. |
 | Qt.AlignVCenter | Centers vertically in the available space. |
 
-&emsp; You can combine flags together using pipes (|), however note that you can only use one vertical or horizontal alignment flag at a time.
+You can combine flags together using pipes (|), however note that you can only use one vertical or horizontal alignment flag at a time.
 ``` align_top_left = Qt.AlignLeft | Qt.AlignTop ```
 
 **Qt Flags** :
@@ -30,8 +30,9 @@ By ORing together we get the value 0b0101 representing 'bottom left'.*
 | --- | --- |
 | Qt.AlignCenter | Centers horizontally and vertically |
 
-&emsp; Weirdly, you can also use QLabel to display an image using the .setPixmap() method. This accepts an pixmap (a pixel array), which you can create by passing an image filename to QPixmap. \
-&emsp; By default the image scales while maintaining its aspect ratio. If you want it to stretch and scale to fit the window completely you can set .setScaledContents(True) on the QLabel.
+Weirdly, you can also use QLabel to display an image using the .setPixmap() method. This accepts an pixmap (a pixel array), which you can create by passing an image filename to QPixmap. 
+
+By default the image scales while maintaining its aspect ratio. If you want it to stretch and scale to fit the window completely you can set .setScaledContents(True) on the QLabel.
 | .setScaledContents(False) | .setScaledContents(True) |
 | --- | --- |
 | ![True](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Widgets/images/widgets_QLabel_QPixmap_False.png) | ![False](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Widgets/images/widgets_QLabel_QPixmap_True.png) |
@@ -39,14 +40,14 @@ By ORing together we get the value 0b0101 representing 'bottom left'.*
 🚀 Run [widgets_QLabel_QPixmap.py](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Widgets/widgets_QLabel_QPixmap.py)
 
 ## QCheckBox
-&emsp; You can set a checkbox state programmatically using .setChecked or .setCheckState. The former accepts either True or False representing checked or unchecked respectively. However, with .setCheckState you also specify a partially checked state using a Qt. namespace flag—
+You can set a checkbox state programmatically using .setChecked or .setCheckState. The former accepts either True or False representing checked or unchecked respectively. However, with .setCheckState you also specify a partially checked state using a Qt. namespace flag—
 | Flag | Behavior |
 | --- | --- |
 | Qt.Checked | Item is checked |
 | Qt.Unchecked | Item is unchecked |
 | Qt.PartiallyChecked | Item is partially checked |
 
-&emsp; If you set the value to Qt.PartiallyChecked the checkbox will become tri-state (that is have three possible states). You can also set a checkbox to be tri-state without setting the current state to partially checked by using .setTriState(True)
+If you set the value to Qt.PartiallyChecked the checkbox will become tri-state (that is have three possible states). You can also set a checkbox to be tri-state without setting the current state to partially checked by using .setTriState(True)
 
 **Note** : *You may notice that when the script is running the current
 state number is displayed as an int with checked = 2,
@@ -111,9 +112,11 @@ which is often more useful.
 
 🚀 Run it! You’ll see a combo box with 3 entries. Select one and it will be shown in the box.
 
-&emsp; You can add items to a QComboBox by passing a list of strings to .addItems(). Items will be added in the order they are provided. \
-&emsp; QComboBox can also be editable, allowing users to enter values not currently in the list and either have them inserted, or simply used as a value. To make the box editable: ``` widget.setEditable(True) ``` \
-&emsp; You can also set a flag to determine how the insert is handled. These flags are stored on the QComboBox class itself and are listed below—
+You can add items to a QComboBox by passing a list of strings to .addItems(). Items will be added in the order they are provided. 
+
+QComboBox can also be editable, allowing users to enter values not currently in the list and either have them inserted, or simply used as a value. To make the box editable: ``` widget.setEditable(True) ``` 
+
+You can also set a flag to determine how the insert is handled. These flags are stored on the QComboBox class itself and are listed below—
 | Flag | Behavior |
 | --- | --- |
 | QComboBox.NoInsert | No insert |
@@ -124,12 +127,14 @@ which is often more useful.
 | QComboBox.InsertBeforeCurrent | Insert before current item |
 | QComboBox.InsertAlphabetically | Insert in alphabetical order |
 
-&emsp; To use these, apply the flag as follows: ``` widget.setInsertPolicy(QComboBox.InsertAlphabetically) ``` \
-&emsp; You can also limit the number of items allowed in the box by using .setMaxCount, e.g. ``` widget.setMaxCount(10) ``` \
+To use these, apply the flag as follows: ``` widget.setInsertPolicy(QComboBox.InsertAlphabetically) ``` 
+
+You can also limit the number of items allowed in the box by using .setMaxCount, e.g. ``` widget.setMaxCount(10) ``` 
+
 🚀 Run [widgets_QComboBox_1.py](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Basic%20PyQt5%20Features/Widgets/widgets_QComboBox_1.py) to test them!
 
 ## QListBox
-&emsp; This widget is similar to QComboBox, except options are presented as a scrollable list of items. It also supports selection of multiple items at once. A QListBox offers an currentItemChanged signal which sends the QListItem (the element of the list box), and a currentTextChanged signal which sends the text of the current item.
+This widget is similar to QComboBox, except options are presented as a scrollable list of items. It also supports selection of multiple items at once. A QListBox offers an currentItemChanged signal which sends the QListItem (the element of the list box), and a currentTextChanged signal which sends the text of the current item.
 
 ```
 import sys
@@ -218,12 +223,14 @@ app.exec_()
 
 🚀 Run it! You’ll see a simple text entry box, with a hint.
 
-&emsp; You can set a maximum length for the text field by using .setMaxLength. Placeholder text, which is text shown until something is entered by the user can be added using .setPlaceholderText. \
-&emsp; The QLineEdit has a number of signals available for different editing events including when return is pressed (by the user), when the user selection is changed. There are also two edit signals, one for when the text in the box has been edited and one for when it has been changed. The distinction here is between user edits and programmatic changes. The textEdited signal is only sent when the user edits text. \
-&emsp; Additionally, it is possible to perform input validation using an input mask to define which characters are supported and where. This can be applied to the field as follows: ``` widget.setInputMask('000.000.000.000;_') ``` . The above would allow a series of 3-digit numbers separated with periods, and could therefore be used to validate IPv4 addresses.
+You can set a maximum length for the text field by using .setMaxLength. Placeholder text, which is text shown until something is entered by the user can be added using .setPlaceholderText. 
+
+The QLineEdit has a number of signals available for different editing events including when return is pressed (by the user), when the user selection is changed. There are also two edit signals, one for when the text in the box has been edited and one for when it has been changed. The distinction here is between user edits and programmatic changes. The textEdited signal is only sent when the user edits text. 
+
+Additionally, it is possible to perform input validation using an input mask to define which characters are supported and where. This can be applied to the field as follows: ``` widget.setInputMask('000.000.000.000;_') ``` . The above would allow a series of 3-digit numbers separated with periods, and could therefore be used to validate IPv4 addresses.
 
 ## QSpinBox and QDoubleSpinBox
-&emsp; QSpinBox provides a small numerical input box with arrows to increase and decrease the value. QSpinBox supports integers while the related widget QDoubleSpinBox supports floats.
+QSpinBox provides a small numerical input box with arrows to increase and decrease the value. QSpinBox supports integers while the related widget QDoubleSpinBox supports floats.
 
 ```
 import sys
@@ -267,15 +274,17 @@ app.exec_()
 
 🚀 Run it! You’ll see a numeric entry box. The value shows pre and post fix units, and is limited to the range +3 to -10.
 
-&emsp; To set the range of acceptable values you can use setMinimum and setMaximum,
+To set the range of acceptable values you can use setMinimum and setMaximum,
 or alternatively use setRange to set both simultaneously. Annotation of value
 types is supported with both prefixes and suffixes that can be added to the
 number, e.g. for currency markers or units using .setPrefix and .setSuffix
-respectively. \
-&emsp; Clicking on the up and down arrows on the widget will increase or decrease
+respectively. 
+
+Clicking on the up and down arrows on the widget will increase or decrease
 the value in the widget by an amount, which can be set using .setSingleStep.
-Note that this has no effect on the values that are acceptable to the widget. \
-&emsp; Both QSpinBox and QDoubleSpinBox have a .valueChanged signal which fires
+Note that this has no effect on the values that are acceptable to the widget. 
+
+Both QSpinBox and QDoubleSpinBox have a .valueChanged signal which fires
 whenever their value is altered. The raw .valueChanged signal sends the
 numeric value (either an int or a float) while the str alternate signal,
 accessible via .valueChanged[str] sends the value as a string, including both
@@ -332,11 +341,11 @@ app.exec_()
 
 🚀 Run it! You’ll see a slider widget. Drag the slider to change the value.
 
-&emsp; You can also construct a slider with a vertical or horizontal orientation by passing the orientation in as you create it. The orientation flags are defined in
+You can also construct a slider with a vertical or horizontal orientation by passing the orientation in as you create it. The orientation flags are defined in
 the Qt. namespace: ``` widget.QSlider(Qt.Vertical) ``` OR ``` widget.QSlider(Qt.Horizontal) ```
 
 ## QDial
-&emsp; The QDial is a rotatable widget that functions just like the slider, but appears as an analogue dial.
+The QDial is a rotatable widget that functions just like the slider, but appears as an analogue dial.
 
 ```
 import sys
