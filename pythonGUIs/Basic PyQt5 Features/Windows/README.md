@@ -6,7 +6,7 @@ There is no restriction on the number of QMainWindow instances you can have, and
 
 As with your main window, creating a window is not sufficient, you must also show it.
 
-```
+```python
 import sys
 
 from PyQt5.QtWidgets import (QApplication, QLabel, QMainWindow, QPushButton,
@@ -47,7 +47,7 @@ app.exec_()
 
 If you run this, you’ll see the main window. Clicking the button may show the second window, but if you see it it will only be visible for a fraction of a second. What’s happening?
 
-```
+```python
     def show_new_window(self, checked):
         w = AnotherWindow()
         w.show()
@@ -55,7 +55,7 @@ If you run this, you’ll see the main window. Clicking the button may show the 
 
 We are creating our second window inside this method, storing it in the variable w and showing it. However, once we leave this method the w variable will be cleaned up by Python, and the window destroyed. To fix this we need to keep a reference to the window somewhere—on the main window self object, for example.
 
-```
+```python
     def show_new_window(self, checked):
         self.w = AnotherWindow()
         self.w.show()
@@ -65,7 +65,7 @@ We are creating our second window inside this method, storing it in the variable
 
 However, what happens if you click the button again? The window will be re-created! This new window will replace the old in the self.w variable, and the previous window will be destroyed. You can see this more clearly if you change the AnotherWindow definition to show a random number in the label each time it is created.
 
-```
+```python
 import sys
 
 from random import randint
@@ -119,7 +119,7 @@ The init block is only run when creating the window. If you keep clicking the bu
 
 One solution is to simply check whether the window has already being created before creating it. The full example below shows this in action.
 
-```
+```python
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -142,7 +142,7 @@ In the next part we’ll look at how to work with these types of windows.
 As we previously saw, if no reference to a window is kept, it will be discarded (and closed). We can use this behavior to close a window, replacing the
 show_new_window method from the previous example with –
 
-```
+```python
     def show_new_window(self, checked):
         if self.w is None:
             self.w = AnotherWindow()
@@ -157,7 +157,7 @@ than None the first test will not pass, and we will not be able to recreate a wi
 
 This will only work if you have not kept a reference to this window somewhere else. To make sure the window closes regardless, you may want to explicitly call .close() on it.
 
-```
+```python
     def show_new_window(self, checked):
         if self.w is None:
             self.w = AnotherWindow()
@@ -173,7 +173,7 @@ So far we’ve looked at how to create new windows on demand. However, sometimes
 
 In the following example we create our external window in the __init__ block for the main window, and then our show_new_window method simply calls self.w.show() to display it.
 
-```
+```python
 import sys
 from random import randint
 
@@ -229,7 +229,7 @@ appearance. Once re-shown any changes will be visible.
 Below we update our main window to create a toggle_window method whichchecks, using .isVisible() to see if the window is currently visible. If it is not, it 
 is shown using .show() , if it is already visible we hide it with .hide().
 
-```
+```python
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
