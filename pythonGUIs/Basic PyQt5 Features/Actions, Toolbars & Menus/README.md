@@ -4,7 +4,7 @@ Qt toolbars support display of icons, text, and can also contain any standard Qt
 
 In Qt toolbars are created from the QToolBar class. To start you create an instance of the class and then call .addToolbar on the QMainWindow. Passing a string in as the first parameter to QToolBar sets the toolbar’s name, which will be used to identify the toolbar in the UI.
 
-```
+```python
 import sys
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QLabel, QMainWindow, QToolBar
