@@ -41,7 +41,7 @@ Let’s make the toolbar a bit more interesting. We could just add a QButton wid
 Without QAction you would have to define this in multiple places. But with QAction you can define a single QAction, defining the triggered action, and
 then add this action to both the menu and the toolbar. Each QAction has names, status messages, icons and signals that you can connect to (and much more).
 
-```
+```python
 import sys
 
 from PyQt5.QtCore import Qt
@@ -97,7 +97,7 @@ Let’s add a statusbar.
 We create a status bar object by calling QStatusBar and passing the result into .setStatusBar. Since we don’t need to change the statusBar settings we can
 just pass it in as we create it. We can create and define the status bar in a single line:
 
-```
+```python
 import sys
 
 from PyQt5.QtCore import Qt
@@ -147,7 +147,7 @@ app.exec_()
 Next we’re going to turn our QAction toggleable — so clicking will turn it on, clicking again will turn it off. To do this, we simple call .setCheckable(True) on
 the QAction object.
 
-```
+```python
 import sys
 
 from PyQt5.QtCore import Qt
@@ -203,7 +203,7 @@ pointless.***
 You also need to let the toolbar know how large your icons are, otherwise your icon will be surrounded by a lot of padding. You can do this by calling
 .setIconSize() with a QSize object.
 
-```
+```python
 import sys
 
 from PyQt5.QtCore import QSize, Qt
@@ -276,7 +276,7 @@ native as possible.***
 
 Next we’ll add a few more bits and bobs to the toolbar. We’ll add a second button and a checkbox widget. As mentioned you can literally put any widget in here, so feel free to go crazy. Don’t worry about the QCheckBox type, we’ll cover that later.
 
-```
+```python
 import sys
 
 from PyQt5.QtCore import QSize, Qt
@@ -344,7 +344,7 @@ To create a menu, we create a menubar we call .menuBar() on the QMainWindow. We 
 
 This is where the power of actions comes in to play. We can reuse the already existing QAction to add the same function to the menu. To add an action you call .addAction passing in one of our defined actions.
 
-```
+```python
 import sys
 
 from PyQt5.QtCore import QSize, Qt
@@ -413,7 +413,7 @@ Click the item in the menu and you will notice that it is toggleable — it inhe
 
 Let’s add some more things to the menu. Here we’ll add a separator to the menu, which will appear as a horizontal line in the menu, and then add the second QAction we created.
 
-```
+```python
 import sys
 
 from PyQt5.QtCore import QSize, Qt
@@ -489,7 +489,7 @@ You can also use ampersand to add accelerator keys to the menu to allow a single
 
 To add a submenu, you simply create a new menu by calling addMenu() on the parent menu. You can then add actions to it as normal:
 
-```
+```python
 import sys
 
 from PyQt5.QtCore import QSize, Qt
@@ -569,7 +569,7 @@ Key sequences can be defined in multiple ways - either by passing as text, using
 
 The completed code, showing the toolbar buttons and menus is shown below:
 
-```
+```python
 import sys
 
 from PyQt5.QtCore import QSize, Qt
