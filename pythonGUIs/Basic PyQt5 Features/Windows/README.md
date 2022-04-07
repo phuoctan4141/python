@@ -248,7 +248,7 @@ class MainWindow(QMainWindow):
 
 The complete working example of this persistent window and toggling the show/hide state is shown below.
 
-```
+```python
 import sys
 from random import randint
 
