@@ -14,7 +14,7 @@ You can actually design and lay out your interface graphically using the Qt Desi
 
 ## Placeholder widget
 
-```
+```python
 from PyQt5.QtGui import QColor, QPalette
 from PyQt5.QtWidgets import QWidget
 
@@ -47,7 +47,7 @@ With QVBoxLayout you arrange widgets one above the other linearly. Adding a widg
 
 Lets add our widget to a layout. Note that in order to add a layout to the QMainWindow we need to apply it to a dummy QWidget. This allows us to then use .setCentralWidget to apply the widget (and the layout) to the window. Our colored widgets will arrange themselves in the layout, contained within the QWidget in the window.
 
-```
+```python
 import sys
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget
@@ -96,7 +96,7 @@ first slot of the parent layout.
 
 &emsp; You can set the spacing around the layout using .setContentMargins or set the
 spacing between elements using .setSpacing. 
-```
+```python
 layout1.setContentsMargins(0,0,0,0)
 layout1.setSpacing(20)
 ```
@@ -112,7 +112,7 @@ QGridLayout allows you to position items specifically in a grid. You specify row
 and column positions for each widget. You can skip elements, and they will
 be left empty.
 
-```
+```python
 import sys
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QGridLayout, QLabel, QMainWindow, QWidget
@@ -163,7 +163,7 @@ is visible at any one time. You can control which widget to show at any time
 by using .setCurrentIndex() or .setCurrentWidget() to set the item by either
 the index (in order the widgets were added) or by the widget itself.
 
-```
+```python
 import sys
 
 from PyQt5.QtCore import Qt
@@ -235,7 +235,7 @@ Helpfully, Qt provides a built-in tab widget that provides this kind of layout
 out of the box - although it’s actually a widget, not a layout. Below the tab
 demo is recreated using QTabWidget.
 
-```
+```python
 import sys
 
 from PyQt5.QtCore import Qt
