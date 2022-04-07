@@ -21,7 +21,7 @@ up to the normal handler for the event by calling the parent class function
 with super(). These could be added to your main window class as follows. In
 each case e will receive the incoming event.
 
-```
+```python
 import sys
 
 from PyQt5.QtCore import Qt
@@ -91,7 +91,7 @@ Qt namespace.
 For example, the following allows us to respond differently to a left, right or
 middle click on the window.
 
-```
+```python
     def mousePressEvent(self, e):
         if e.button() == Qt.LeftButton:
             # handle the left-button press in here
@@ -154,7 +154,7 @@ method of the same name. So in this case we can create a method on our
 MainWindow subclass with the name contextMenuEvent and it will receive all
 events of this type.
 
-```
+```python
     def contextMenuEvent(self, e):
         context = QMenu(self)
         context.addAction(QAction("test 1", self))
@@ -174,7 +174,7 @@ position.
 
 Just for completeness, there is actually a signal-based approach to creating context menus.
 
-```
+```python
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -207,7 +207,7 @@ super().
 
 This is the Python parent class, not the pyqt5 .parent().
 
-```
+```python
 def mousePressEvent(self, event):
   print("Mouse pressed!")
   super(self, MainWindow).contextMenuEvent(event)
@@ -234,7 +234,7 @@ reaches the main window.
 In your own event handlers you can choose to mark an event as handled
 calling .accept()—
 
-```
+```python
   class CustomButton(Qbutton)
     def mousePressEvent(self, e):
         e.accept()
@@ -243,7 +243,7 @@ calling .accept()—
 Alternatively, you can mark it as unhandled by calling .ignore() on the event
 object. In this case the event will continue to bubble up the hierarchy.
 
-```
+```python
   class CustomButton(Qbutton)
     def event(self, e):
         e.accept()
