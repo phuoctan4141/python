@@ -6,7 +6,7 @@ QMainWindow, as its parent.
 Let’s create our own QDialog. We’ll start with a simple skeleton app with a
 button to press hooked up to a slot method.
 
-```
+```python
 import sys
 
 from PyQt5.QtWidgets import QApplication, QDialog, QMainWindow, QPushButton
@@ -54,7 +54,7 @@ Like our very first window, this isn’t very interesting. Let’s fix that by a
 
 To customize the QDialog we can subclass it.
 
-```
+```python
 class CustomDialog(QDialog):
     def __init__(self, parent=None):  # <1>
         super().__init__(parent)
@@ -140,7 +140,7 @@ layout on our dialog.
 
 Finally, we launch the CustomDialog in our MainWindow.button_clicked slot.
 
-```
+```python
     def button_clicked(self, s):
         print("click", s)
 
@@ -158,7 +158,7 @@ There are many dialogs which follow the simple pattern we just saw—a message w
 
 The example below creates a simple QMessageBox and shows it.
 
-```
+```python
     def button_clicked(self, s):
         dlg = QMessageBox(self)
         dlg.setWindowTitle("I have a question!")
@@ -206,7 +206,7 @@ You can also tweak the icon shown on the dialog by setting the icon with one of 
 
 For example, the following creates a question dialog with Yes and No buttons.
 
-```
+```python
 import sys
 
 from PyQt5.QtWidgets import QApplication, QDialog, QMainWindow, QMessageBox, QPushButton
@@ -253,7 +253,7 @@ app.exec_()
 ## Built in QMessageBox dialogs
 To make things even simpler the QMessageBox has a number of methods which can be used to construct these types of message dialog. These methods are shown below—
 
-```
+```python
 QMessageBox.about(parent, title, message)
 QMessageBox.critical(parent, title, message)
 QMessageBox.information(parent, title, message)
@@ -263,7 +263,7 @@ QMessageBox.warning(parent, title, message)
 
 The parent parameter is the window which the dialog will be a child of. If you’re launching your dialog from your main window, you can just pass in self. The following example creates a question dialog, as before, with Yes and No buttons.
 
-```
+```python
     def button_clicked(self, s):
 
         button = QMessageBox.question(self, "Question dialog", "The longer message")
@@ -280,7 +280,7 @@ Notice that rather than call exec() we now simply call the dialog method and the
 
 The four information, question, warning and critical methods also accept optional buttons and defaultButton arguments which can be used to tweak the buttons shown on the dialog and select one by default. Generally though you don’t want to change this from the default.
 
-```
+```python
     def button_clicked(self, s):
 
         button = QMessageBox.critical(
