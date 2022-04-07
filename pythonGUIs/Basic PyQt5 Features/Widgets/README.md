@@ -68,7 +68,7 @@ font faces, or size, in word processing applications. Although
 Qt actually provides a specific font-selection combo box as
 QFontComboBox.*
 
-```
+```python
 import sys
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QComboBox, QMainWindow
@@ -136,7 +136,7 @@ You can also limit the number of items allowed in the box by using .setMaxCount,
 ## QListBox
 This widget is similar to QComboBox, except options are presented as a scrollable list of items. It also supports selection of multiple items at once. A QListBox offers an currentItemChanged signal which sends the QListItem (the element of the list box), and a currentTextChanged signal which sends the text of the current item.
 
-```
+```python
 import sys
 from PyQt5.QtWidgets import QApplication, QListWidget, QMainWindow
 
@@ -173,7 +173,7 @@ app.exec_()
 
 ## QLineEdit
 
-```
+```python
 import sys
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QLineEdit, QMainWindow
@@ -232,7 +232,7 @@ Additionally, it is possible to perform input validation using an input mask to 
 ## QSpinBox and QDoubleSpinBox
 QSpinBox provides a small numerical input box with arrows to increase and decrease the value. QSpinBox supports integers while the related widget QDoubleSpinBox supports floats.
 
-```
+```python
 import sys
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QMainWindow, QSpinBox
@@ -293,7 +293,7 @@ the prefix and suffix characters.
 ## QSlider
 &emsp; There is an additional .sliderMoved signal that is triggered whenever the slider moves position and a .sliderPressed signal that emits whenever the slider is clicked.
 
-```
+```python
 import sys
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QMainWindow, QSlider
@@ -347,7 +347,7 @@ the Qt. namespace: ``` widget.QSlider(Qt.Vertical) ``` OR ``` widget.QSlider(Qt.
 ## QDial
 The QDial is a rotatable widget that functions just like the slider, but appears as an analogue dial.
 
-```
+```python
 import sys
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QDial, QMainWindow
