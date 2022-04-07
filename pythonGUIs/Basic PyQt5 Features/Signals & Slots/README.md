@@ -3,7 +3,7 @@
 ## Receiving data
 The .clicked signal is no exception, also providing a checked (or toggled) state for the button. For normal buttons this is always False, so our first slot ignored this data.
 
-```
+```python
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton
 from PyQt5.QtCore import Qt
 import sys
@@ -40,7 +40,8 @@ app.exec_()
     
 ## Storing data
 Often it is useful to store the current state of a widget in a Python variable. This allows you to work with the values like any other Python variable and without accessing the original widget. You can either store these values as individual variables or use a dictionary if you prefer.
-```
+
+```python
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton
 from PyQt5.QtCore import Qt
 import sys
@@ -76,9 +77,10 @@ app.exec_()
 # <2> Use the default value to set the initial state of the widget.
 # <3> When the widget state changes, update the variable to match.
 ```  
-\
+
 You can use this same pattern with any PyQt5 widgets. If a widget does not provide a signal that sends the current state, you will need to retrieve the value from the widget directly in your handler.
-```
+
+```python
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton
 
@@ -116,7 +118,7 @@ app.exec_()
 ```
 
 ## Changing the interface
-```
+```python
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton
 import sys
 
@@ -153,7 +155,7 @@ app.exec_()
 🚀 Run it! If you click the button the text will change and the button will become unclickable.
 
 In the following example we connect the .windowTitleChanged signal on the QMainWindow to a method slot the_window_title_changed. This slot also receives the new window title.
-```
+```python
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton
 import sys
 from random import choice
