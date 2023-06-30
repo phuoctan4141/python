@@ -381,3 +381,5 @@ app.exec_()
 If the data in your application has the potential to get large or more complex,
 you may prefer to use an actual database to store it. Qt provides models for
 interacting with SQL databases which we’ll cover shortly.
+
+![todo](https://github.com/phuoctan4141/python/blob/main/pythonGUIs/Model%20View%20Architecture/Todo%20List%20/images/todo.png)
